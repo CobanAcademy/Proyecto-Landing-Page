@@ -10,9 +10,9 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="h-12 w-12 bg-[#6C55D7] rounded-lg flex items-center justify-center">
-                <span className="font-bold text-2xl">Cc</span>
+                <span className="font-bold text-2xl">C</span>
               </div>
-              <span className="text-2xl font-bold">cobanacademy</span>
+              <span className="text-2xl font-bold">CobanAcademy</span>
             </div>
             <p className="text-[#C5BFEB]">
               Aprende a gestionar tus créditos como un experto

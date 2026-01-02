@@ -8,7 +8,7 @@ import Footer from '@/components/layout/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'CobanAcademy - Aprende a gestionar tus créditos como un experto',
+  title: 'CobanAcademy',
   description: 'Si necesitas aprender cómo solicitar un crédito o cómo solucionar un problema con tus créditos, llegaste al lugar correcto.',
   keywords: 'créditos, finanzas, educación financiera, bancos, préstamos',
 };
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="dark"> {/* Añade className="dark" */}
+    <html lang="es" className="dark">
       <body className={`${inter.className}`}>
         <Header />
         <main className="min-h-screen">

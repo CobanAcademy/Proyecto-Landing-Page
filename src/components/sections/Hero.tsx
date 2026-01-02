@@ -8,6 +8,7 @@ const HeroSection = () => {
     { value: '+10.000 Bs.', label: 'Ahorro promedio en intereses' },
     { value: '100%', label: 'Efectividad en recuperación de seguros' },
     { value: '+2M Bs.', label: 'Ahorrados en intereses por nuestros estudiantes' },
+    { value: '+2M Bs.', label: 'Cartera Desembolsada' },
   ];
 
   return (
@@ -28,7 +29,7 @@ const HeroSection = () => {
             Descarga la app
           </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {stats.map((stat, index) => (
               <StatCard
                 key={index}
