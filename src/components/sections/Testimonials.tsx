@@ -149,7 +149,7 @@ const TestimonialsSection = () => {
         </h2>
         <p className="text-center text-[#C5BFEB] mb-12 max-w-3xl mx-auto">
           Desde estudiantes que obtuvieron un crédito después de haber sido rechazada su solicitud, 
-          otros que detectaron errores en sus créditos, hasta quienes ahorraron más de 100K Bs. en intereses.
+          otros que detectaron errores gravísimos en sus créditos, hasta quienes ahorraron más de 100K Bs. en intereses.
         </p>
 
         {/* Carrusel Container */}
