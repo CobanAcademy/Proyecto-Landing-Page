@@ -1,4 +1,4 @@
-// landing-app/src/components/sections/TestimonialsSection.tsx (con auto-play)
+
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
@@ -61,7 +61,7 @@ const TestimonialsSection = () => {
     setIsDragging(true);
     setStartX(e.pageX - carouselRef.current.offsetLeft);
     setScrollLeft(carouselRef.current.scrollLeft);
-    setAutoPlay(false);
+    //setAutoPlay(false);
   };
 
   const handleMouseLeave = () => {
@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
   const handleMouseUp = () => {
     setIsDragging(false);
     // Reactivar auto-play después de 10 segundos
-    setTimeout(() => setAutoPlay(true), 5000);
+    //setTimeout(() => setAutoPlay(true), 5000);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -89,7 +89,7 @@ const TestimonialsSection = () => {
     
     setStartX(e.touches[0].pageX - carouselRef.current.offsetLeft);
     setScrollLeft(carouselRef.current.scrollLeft);
-    setAutoPlay(false);
+    //setAutoPlay(false);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -239,7 +239,7 @@ const TestimonialsSection = () => {
                 key={index}
                 onClick={() => {
                   scrollToIndex(index);
-                  setAutoPlay(false);
+                  //setAutoPlay(false);
                 }}
                 className={`w-2 h-2 rounded-full transition-all ${
                   index === currentIndex 
@@ -263,7 +263,7 @@ const TestimonialsSection = () => {
               </svg>
             </button>
             
-            <button
+            {/* <button
               onClick={() => setAutoPlay(!autoPlay)}
               className="p-2 rounded-full bg-[#3A3270] hover:bg-[#6C55D7] transition-colors"
               aria-label={autoPlay ? "Pausar carrusel" : "Reproducir carrusel"}
@@ -278,7 +278,7 @@ const TestimonialsSection = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               )}
-            </button>
+            </button> */}
             
             <button
               onClick={handleNext}
