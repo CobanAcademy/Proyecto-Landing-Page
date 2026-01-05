@@ -6,7 +6,7 @@ const GuaranteeSection = () => {
     <section className="py-16 md:py-24 bg-gradient-to-b from-background to-card">
       <div className="container-custom">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               RESULTADOS GARANTIZADOS
             </h2>
@@ -16,7 +16,7 @@ const GuaranteeSection = () => {
                 El único requisito es haber completado al menos un curso y compartirnos el motivo para ayudarnos a mejorar.
               </span>
             </p>
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Video Placeholder */}
@@ -43,7 +43,7 @@ const GuaranteeSection = () => {
 
             {/* CTA */}
             <div className="text-center lg:text-left">
-              <h3 className="text-2xl font-bold mb-6">
+              {/* <h3 className="text-2xl font-bold mb-6">
                 Transforma tu vida financiera con nuestra metodología probada
               </h3>
               <ul className="space-y-4 mb-8">
@@ -62,7 +62,7 @@ const GuaranteeSection = () => {
                     <span>{item}</span>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
               <button className="btn-primary px-8 py-4 text-lg w-full lg:w-auto">
                 Descarga la app
               </button>

@@ -46,7 +46,7 @@ const Header = () => {
                   <span className="font-bold text-xl">Cc</span>
                 </div>
                 <span className="text-xl font-bold text-foreground hidden sm:inline">
-                  cobanacademy
+                  CobanAcademy
                 </span>
               </Link>
             </div>
@@ -70,7 +70,7 @@ const Header = () => {
                   Descarga la app
                 </button>
                 <button className="btn-secondary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap">
-                  Nuevo Botón
+                  Contáctanos
                 </button>
               </div>
 

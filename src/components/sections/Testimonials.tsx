@@ -142,7 +142,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-[#2D2659]/50">
+    <section className="jsx-ac2f077ff8734649 jsx-ac2f077ff8734649 py-16 md:py-24 bg-[#2D2659]/50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           Nuestros estudiantes hablan por nosotros

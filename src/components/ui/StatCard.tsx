@@ -1,4 +1,3 @@
-// landing-app/src/components/ui/StatCard.tsx
 import React from 'react';
 
 interface StatCardProps {
@@ -10,32 +9,43 @@ interface StatCardProps {
 const StatCard: React.FC<StatCardProps> = ({ value, label, compact = false }) => {
   return (
     <div className={`
-      card text-center 
+      relative bg-card border border-border rounded-xl
       ${compact ? 'p-3' : 'p-4 md:p-5'}
-      flex flex-col justify-center
+      flex flex-col justify-center items-center
       min-h-[120px] md:min-h-[140px]
-      h-full
+      h-full w-full
+      overflow-hidden
     `}>
-      {/* Valor - Siempre en una línea */}
+      {/* Valor - con ancho máximo */}
       <div className={`
         ${compact ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'} 
         font-bold text-primary mb-2 md:mb-3
         leading-none
-        break-keep
+        text-center
+        w-full
+        px-2
       `}>
         {value}
       </div>
       
-
-      <p className={`
-        ${compact ? 'text-xs' : 'text-sm md:text-base'} 
-        text-muted-foreground 
-        line-clamp-3 md:line-clamp-4
-        leading-tight md:leading-snug
-        px-1
-      `}>
-        {label}
-      </p>
+      {/* Label - con control de texto estricto */}
+      <div className="w-full px-2">
+        <p className={`
+          ${compact ? 'text-xs' : 'text-sm md:text-base'} 
+          text-muted-foreground 
+          text-center
+          leading-tight md:leading-snug
+          line-clamp-3
+          max-h-[4.5em]
+          overflow-hidden
+          text-ellipsis
+          break-words
+          hyphens-auto
+          w-full
+        `}>
+          {label}
+        </p>
+      </div>
     </div>
   );
 };
