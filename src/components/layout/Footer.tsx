@@ -41,13 +41,25 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Descarga la app</h3>
             <div className="space-y-4">
-            
-              <div className="space-y-4">                
-                <img src="/icons/android.svg" alt="Logo" />
+              {/* Google Play */}
+              <a 
+                href="https://play.google.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block transition-all duration-300  hover:opacity-80 cursor-pointer"
+              >
+                <img src="/icons/android.svg" alt="Disponible en Google Play"  />
+              </a>
 
-                <img src="/icons/ios.svg" alt="Logo"  />
-               
-              </div>
+              {/* App Store */}
+              <a 
+                href="https://apps.apple.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block transition-all duration-300  hover:opacity-80 cursor-pointer"
+              >
+                <img src="/icons/ios.svg" alt="Descargar en el App Store"  />
+              </a>
             </div>
           </div>
         </div>

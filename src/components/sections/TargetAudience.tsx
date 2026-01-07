@@ -5,7 +5,7 @@ const TargetAudienceSection = () => {
   const audienceTypes = [
     {
       title: 'Asalariados o dependientes',
-      icon: '👨‍💼',
+      icon: "/icons/salario.svg",
       services: [
         'Créditos de vivienda',
         'Créditos vehicular',
@@ -15,7 +15,7 @@ const TargetAudienceSection = () => {
     },
     {
       title: 'Negocio o empresa',
-      icon: '🏢',
+      icon: "/icons/oficina.svg",
       services: [
         'Capital de operación',
         'Capital de inversión',
@@ -25,7 +25,7 @@ const TargetAudienceSection = () => {
     },
     {
       title: 'Profesionales independientes',
-      icon: '👩‍⚕️',
+      icon: "/icons/independiente.svg",
       services: [
         'Créditos de consumo',
         'Créditos de inversión',
@@ -36,7 +36,7 @@ const TargetAudienceSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-[#2D2659]">
+    <section className="py-16 md:py-24 bg-[#2B1B46]">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           ¿Para quienes son nuestros cursos?
@@ -46,10 +46,12 @@ const TargetAudienceSection = () => {
           {audienceTypes.map((audience, index) => (
             <div 
               key={index} 
-              className="bg-[#3A3270] rounded-xl p-6 transition-transform hover:scale-105 hover:shadow-xl"
+              className=" rounded-xl p-6 border-[#6B54D6] border-2 transition-transform hover:scale-105 hover:shadow-xl"
             >
-              <div className="flex flex-col items-center text-center mb-6">
-                <div className="text-4xl mb-4">{audience.icon}</div>
+              <div className="flex flex-col items-start text-left mb-6">
+                <div className="text-4xl mb-4">
+                <img src={audience.icon} alt="Logo" className='' />
+                </div>
                 <h3 className="text-xl font-semibold mb-4">{audience.title}</h3>
               </div>
               

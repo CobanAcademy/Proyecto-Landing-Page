@@ -20,12 +20,7 @@ const HeroSection = () => {
     <>
       <section className="relative overflow-hidden min-h-screen lg:min-h-[700px] pt-3">
          {/* Gradiente radial de fondo - extendido */}
-         <div 
-           className="absolute -inset-4" 
-           style={{
-             background: 'radial-gradient(circle at 70% 15%, #6B54D6 0%, #2C2353 100%)'
-           }}
-         ></div>
+        
          
          <div className="container mx-auto px-4 pt-20 h-full relative z-10">
           {/* Grid de 2 columnas: Texto e Imagen */}
