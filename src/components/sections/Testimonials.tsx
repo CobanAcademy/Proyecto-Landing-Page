@@ -1,328 +1,263 @@
-
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+
+type Testimonial = {
+  name: string;
+  role: string;
+  quote: string;
+  handle?: string;     // @usuario
+  avatar?: string;     // emoji fallback
+  avatarSrc?: string;  // si luego quieres usar foto real
+};
+
+const InstagramIcon = ({ className = '' }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      d="M7.5 2.5h9A5 5 0 0 1 21.5 7.5v9a5 5 0 0 1-5 5h-9a5 5 0 0 1-5-5v-9a5 5 0 0 1 5-5Z"
+      stroke="currentColor"
+      strokeWidth="1.6"
+    />
+    <path
+      d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z"
+      stroke="currentColor"
+      strokeWidth="1.6"
+    />
+    <path
+      d="M17.6 6.7h.01"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const TestimonialCard = ({ t }: { t: Testimonial }) => {
+  return (
+    <div className="rounded-2xl bg-[#2D2659]/95 border border-white/10 shadow-[0px_18px_40px_rgba(0,0,0,0.25)] px-6 py-5">
+      {/* Header */}
+      <div className="flex items-center gap-3">
+        <div className="h-11 w-11 rounded-full overflow-hidden bg-white/10 flex items-center justify-center shrink-0">
+          {t.avatarSrc ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={t.avatarSrc} alt={t.name} className="h-full w-full object-cover" />
+          ) : (
+            <span className="text-xl">{t.avatar ?? '👤'}</span>
+          )}
+        </div>
+
+        <div className="leading-tight">
+          <div className="text-white font-semibold text-sm md:text-base">
+            {t.name}
+          </div>
+          <div className="text-white/70 text-xs md:text-sm">
+            {t.role}
+          </div>
+        </div>
+      </div>
+
+      {/* Quote */}
+      <p className="mt-4 text-white/85 text-sm md:text-[15px] leading-relaxed">
+        {t.quote}
+      </p>
+
+      {/* Handle */}
+      <div className="mt-5 flex items-center gap-2 text-white/60 text-xs">
+        <InstagramIcon className="h-4 w-4" />
+        <span>{t.handle ?? '@cobanacademy'}</span>
+      </div>
+    </div>
+  );
+};
 
 const TestimonialsSection = () => {
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       name: 'Gabriela Méndez',
-      role: 'Asesor de ventas',
-      quote: 'Tras 2 años de rechazos bancarios, aprendí a gestionar mi perfil con ellos. ¡En solo 3 meses logré la aprobación de mi casa!',
-      avatar: '👩‍💼'
+      role: 'Arquitecta',
+      quote:
+        'Tras 2 años de rechazos bancarios, aprendí a gestionar mi perfil con ellos. ¡En solo 3 meses logré la aprobación de mi casa!',
+      avatar: '👩‍💼',
+      handle: '@gaby.mendez',
     },
     {
       name: 'Jorge Sanchez',
-      role: 'Arquitecta',
-      quote: 'Vivía estresado por las deudas. Gracias a su método, ordené mis finanzas y por fin duermo tranquilo.',
-      avatar: '👨‍🎨'
+      role: 'Comerciante',
+      quote:
+        'Vivía estresado por las deudas. Gracias a su método, ordené mis finanzas y por fin duermo tranquilo.',
+      avatar: '👨‍💼',
+      handle: '@jorge.sanchez',
     },
     {
       name: 'Maria Paz',
-      role: 'Comerciante',
-      quote: 'Como independiente nadie me prestaba. Aquí aprendí a validar mis ingresos ante el banco y conseguí el capital para crecer.',
-      avatar: '👩‍🍳'
+      role: 'Asesor de ventas',
+      quote:
+        'Como independiente nadie me prestaba. Aquí aprendí a validar mis ingresos ante el banco y conseguí el capital para crecer.',
+      avatar: '👩‍💻',
+      handle: '@maria.paz',
     },
     {
       name: 'Carlos Rodríguez',
       role: 'Ingeniero',
-      quote: 'Ahorré más de 50,000 Bs. en intereses después de aplicar lo aprendido en los cursos.',
-      avatar: '👨‍🔧'
+      quote:
+        'Ahorré más de 50,000 Bs. en intereses después de aplicar lo aprendido en los cursos.',
+      avatar: '👨‍🔧',
+      handle: '@carlos.rodriguez',
     },
     {
       name: 'Ana López',
       role: 'Médico',
-      quote: 'Recuperé 3,000 Bs. en seguros de vida que no sabía que me correspondían.',
-      avatar: '👩‍⚕️'
-    }
+      quote:
+        'Recuperé 3,000 Bs. en seguros de vida que no sabía que me correspondían.',
+      avatar: '👩‍⚕️',
+      handle: '@ana.lopez',
+    },
   ];
 
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
+  // ----- Desktop: 3 cards visibles + 3 dots (para 5 items => 3 "ventanas")
+  const desktopWindows = useMemo(() => {
+    return Math.max(1, testimonials.length - 2); // n=5 => 3 dots
+  }, [testimonials.length]);
 
-  // Auto-play cada 5 segundos
+  const [desktopIndex, setDesktopIndex] = useState(0);
+  const [desktopAnimate, setDesktopAnimate] = useState(true);
+
+  const desktopVisible = useMemo(() => {
+    const i = Math.min(desktopIndex, testimonials.length - 3);
+    return [testimonials[i], testimonials[i + 1], testimonials[i + 2]];
+  }, [desktopIndex, testimonials]);
+
+  // Autoplay suave (opcional)
   useEffect(() => {
-    if (!autoPlay) return;
-    
-    const interval = setInterval(() => {
-      handleNext();
-    }, 2500);
+    const id = setInterval(() => {
+      setDesktopIndex((prev) => (prev + 1) % desktopWindows);
+    }, 3500);
+    return () => clearInterval(id);
+  }, [desktopWindows]);
 
-    return () => clearInterval(interval);
-  }, [autoPlay, currentIndex]);
+  // Animación de entrada (slide suave desde la derecha) cuando cambia el grupo en desktop
+  useEffect(() => {
+    setDesktopAnimate(false);
+    const raf = requestAnimationFrame(() => {
+      setDesktopAnimate(true);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [desktopIndex]);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!carouselRef.current) return;
-    
-    setIsDragging(true);
-    setStartX(e.pageX - carouselRef.current.offsetLeft);
-    setScrollLeft(carouselRef.current.scrollLeft);
-    //setAutoPlay(false);
-  };
+  // ----- Mobile: carrusel scroll-snap + dots
+  const mobileRef = useRef<HTMLDivElement>(null);
+  const [mobileIndex, setMobileIndex] = useState(0);
 
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
+  const onMobileScroll = () => {
+    if (!mobileRef.current) return;
+    const el = mobileRef.current;
+    const card = el.querySelector<HTMLElement>('[data-card="true"]');
+    if (!card) return;
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    // Reactivar auto-play después de 10 segundos
-    //setTimeout(() => setAutoPlay(true), 5000);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !carouselRef.current) return;
-    
-    e.preventDefault();
-    const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Velocidad del drag
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  // Para touch en móviles
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!carouselRef.current) return;
-    
-    setStartX(e.touches[0].pageX - carouselRef.current.offsetLeft);
-    setScrollLeft(carouselRef.current.scrollLeft);
-    //setAutoPlay(false);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!carouselRef.current) return;
-    
-    const x = e.touches[0].pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const scrollToIndex = (index: number) => {
-    if (carouselRef.current) {
-      const card = carouselRef.current.children[index] as HTMLElement;
-      if (card) {
-        const cardWidth = card.offsetWidth;
-        const gap = 16;
-        const scrollPosition = index * (cardWidth + gap);
-        
-        carouselRef.current.scrollTo({
-          left: scrollPosition,
-          behavior: 'smooth'
-        });
-        setCurrentIndex(index);
-      }
-    }
-  };
-
-  const handleNext = () => {
-    const nextIndex = currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1;
-    scrollToIndex(nextIndex);
-  };
-
-  const handlePrev = () => {
-    const prevIndex = currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1;
-    scrollToIndex(prevIndex);
-  };
-
-  // Actualizar índice cuando se hace scroll
-  const handleScroll = () => {
-    if (!carouselRef.current) return;
-    
-    const scrollPos = carouselRef.current.scrollLeft;
-    const cardWidth = carouselRef.current.children[0]?.clientWidth || 0;
     const gap = 16;
-    const newIndex = Math.round(scrollPos / (cardWidth + gap));
-    
-    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < testimonials.length) {
-      setCurrentIndex(newIndex);
-    }
+    const w = card.offsetWidth + gap;
+    const idx = Math.round(el.scrollLeft / w);
+    if (idx !== mobileIndex) setMobileIndex(idx);
+  };
+
+  const scrollMobileTo = (index: number) => {
+    if (!mobileRef.current) return;
+    const el = mobileRef.current;
+    const card = el.querySelector<HTMLElement>('[data-card="true"]');
+    if (!card) return;
+
+    const gap = 16;
+    const w = card.offsetWidth + gap;
+    el.scrollTo({ left: index * w, behavior: 'smooth' });
+    setMobileIndex(index);
   };
 
   return (
-    <section className="jsx-ac2f077ff8734649 jsx-ac2f077ff8734649 py-16 md:py-24 bg-[#2D2659]/50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          Nuestros estudiantes hablan por nosotros
+    <section className="bg-[#6C55D7] py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-4">
+        {/* Title */}
+        <h2 className="text-center text-white font-archivo-black text-3xl md:text-5xl leading-tight">
+          Nuestros estudiantes hablan <br className="hidden sm:block" /> por nosotros
         </h2>
-        <p className="text-center text-[#C5BFEB] mb-12 max-w-3xl mx-auto">
-          Desde estudiantes que obtuvieron un crédito después de haber sido rechazada su solicitud, 
-          otros que detectaron errores gravísimos en sus créditos, hasta quienes ahorraron más de 100K Bs. en intereses.
+
+        <p className="mt-4 text-center text-white/80 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
+          Desde estudiantes que obtuvieron un crédito después de haber sido rechazada su solicitud,
+          otros que detectaron errores en sus créditos, hasta quienes ahorraron más de 100K Bs. en intereses
+          y recuperaron +3,000 Bs. en seguros de vida.
         </p>
 
-        {/* Carrusel Container */}
-        <div className="relative group">
-          {/* Flechas de navegación (aparecen al hover en desktop) */}
-          <button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 bg-[#6C55D7] hover:bg-[#5C45C7] w-10 h-10 rounded-full flex items-center justify-center shadow-lg opacity-0 md:group-hover:opacity-100 transition-opacity"
-            aria-label="Testimonio anterior"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 bg-[#6C55D7] hover:bg-[#5C45C7] w-10 h-10 rounded-full flex items-center justify-center shadow-lg opacity-0 md:group-hover:opacity-100 transition-opacity"
-            aria-label="Siguiente testimonio"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Carrusel con drag & drop */}
+        {/* MOBILE */}
+        <div className="mt-10 lg:hidden">
           <div
-            ref={carouselRef}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 px-2 cursor-grab active:cursor-grabbing"
+            ref={mobileRef}
+            onScroll={onMobileScroll}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 px-1"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
-              scrollSnapType: 'x mandatory',
             }}
-            onMouseDown={handleMouseDown}
-            onMouseLeave={handleMouseLeave}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onScroll={handleScroll}
           >
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((t, idx) => (
               <div
-                key={index}
-                className="flex-none w-[calc(100vw-4rem)] sm:w-[400px] md:w-[450px] snap-center"
+                key={idx}
+                data-card="true"
+                className="snap-center flex-none w-[86%] sm:w-[420px]"
               >
-                <div className="bg-[#2D2659] rounded-xl p-6 h-full border border-[#3A3270] hover:border-[#6C55D7] transition-all duration-300 hover:shadow-xl">
-                  {/* Avatar y nombre */}
-                  <div className="flex items-center mb-4">
-                    <div className="text-4xl mr-4">{testimonial.avatar}</div>
-                    <div>
-                      <h3 className="font-bold text-lg">{testimonial.name}</h3>
-                      <p className="text-[#D455D7] text-sm">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  
-                  {/* Testimonio */}
-                  <p className="text-[#C5BFEB] italic leading-relaxed">"{testimonial.quote}"</p>
-                  
-                  {/* Rating y acción */}
-                  <div className="flex items-center justify-between mt-6">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-lg">★</span>
-                      ))}
-                    </div>
-                    <button 
-                      className="text-[#6C55D7] hover:text-[#5C45C7] text-sm font-medium"
-                      onClick={() => console.log('Ver testimonio completo:', testimonial.name)}
-                    >
-                      Ver más →
-                    </button>
-                  </div>
-                </div>
+                <TestimonialCard t={t} />
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Controles inferiores */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
-          {/* Indicadores de puntos */}
-          <div className="flex space-x-2">
-            {testimonials.map((_, index) => (
+          {/* Dots mobile */}
+          <div className="mt-8 flex items-center justify-center gap-2">
+            {testimonials.map((_, i) => (
               <button
-                key={index}
-                onClick={() => {
-                  scrollToIndex(index);
-                  //setAutoPlay(false);
-                }}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex 
-                    ? 'bg-[#6C55D7] w-8' 
-                    : 'bg-[#3A3270] hover:bg-[#6C55D7]'
+                key={i}
+                onClick={() => scrollMobileTo(i)}
+                aria-label={`Ir al testimonio ${i + 1}`}
+                className={`h-2 w-2 rounded-full transition-all ${
+                  i === mobileIndex ? 'bg-[#FF7A00]' : 'bg-white/40 hover:bg-white/60'
                 }`}
-                aria-label={`Ir al testimonio ${index + 1}`}
               />
             ))}
           </div>
+        </div>
 
-          {/* Controles de reproducción */}
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={handlePrev}
-              className="p-2 rounded-full bg-[#3A3270] hover:bg-[#6C55D7] transition-colors"
-              aria-label="Anterior"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            
-            {/* <button
-              onClick={() => setAutoPlay(!autoPlay)}
-              className="p-2 rounded-full bg-[#3A3270] hover:bg-[#6C55D7] transition-colors"
-              aria-label={autoPlay ? "Pausar carrusel" : "Reproducir carrusel"}
-            >
-              {autoPlay ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              )}
-            </button> */}
-            
-            <button
-              onClick={handleNext}
-              className="p-2 rounded-full bg-[#3A3270] hover:bg-[#6C55D7] transition-colors"
-              aria-label="Siguiente"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+        {/* DESKTOP */}
+        <div className="hidden lg:block mt-12">
+          <div
+            className="grid grid-cols-3 gap-8"
+            style={{
+              transform: desktopAnimate ? 'translateX(0)' : 'translateX(40px)',
+              opacity: desktopAnimate ? 1 : 0,
+              transition: 'transform 400ms ease, opacity 400ms ease',
+            }}
+          >
+            {desktopVisible.map((t, idx) => (
+              <TestimonialCard key={idx} t={t} />
+            ))}
+          </div>
+
+          {/* Dots desktop (como Figma: 3 puntitos) */}
+          <div className="mt-10 flex items-center justify-center gap-2">
+            {Array.from({ length: desktopWindows }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setDesktopIndex(i)}
+                aria-label={`Ir al grupo ${i + 1}`}
+                className={`h-2 w-2 rounded-full transition-all ${
+                  i === desktopIndex ? 'bg-[#FF7A00]' : 'bg-white/40 hover:bg-white/60'
+                }`}
+              />
+            ))}
           </div>
         </div>
-
-        {/* Contador */}
-        <div className="text-center mt-4 text-[#C5BFEB] text-sm">
-          {currentIndex + 1} / {testimonials.length}
-        </div>
       </div>
-
-      <style jsx global>{`
-        /* Estilos globales para scrollbar personalizada */
-        .testimonial-carousel::-webkit-scrollbar {
-          height: 6px;
-        }
-        
-        .testimonial-carousel::-webkit-scrollbar-track {
-          background: #2D2659;
-          border-radius: 3px;
-        }
-        
-        .testimonial-carousel::-webkit-scrollbar-thumb {
-          background: #6C55D7;
-          border-radius: 3px;
-        }
-        
-        .testimonial-carousel::-webkit-scrollbar-thumb:hover {
-          background: #5C45C7;
-        }
-        
-        /* Smooth scrolling para móviles */
-        .testimonial-carousel {
-          -webkit-overflow-scrolling: touch;
-        }
-      `}</style>
     </section>
   );
 };

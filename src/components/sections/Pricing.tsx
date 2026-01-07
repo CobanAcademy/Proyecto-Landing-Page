@@ -59,7 +59,7 @@ const buttonStyle = (color: PlanColor) => {
 
 const PricingSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-linear-to-br from-[#6C55D7] via-[#5C45C7] to-[#6C55D7]">
+    <section className="py-16 md:py-24 bg-[#6C55D7]">
       <div className="container-custom">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-archivo-black text-white mb-3">
