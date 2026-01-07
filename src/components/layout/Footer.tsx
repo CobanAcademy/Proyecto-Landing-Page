@@ -43,7 +43,7 @@ const Footer = () => {
             <div className="space-y-4">
               {/* Google Play */}
               <a 
-                href="https://play.google.com" 
+                href="https://play.google.com/store/apps/details?id=com.cobanacademy.cobanacademy&hl=es_BO" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block transition-all duration-300  hover:opacity-80 cursor-pointer"
@@ -67,7 +67,7 @@ const Footer = () => {
         {/* Iconos de redes sociales */}
         <div className="flex justify-center items-center gap-4 mt-12 mb-8">
           <a 
-            href="https://facebook.com" 
+            href="https://www.facebook.com/cobanacademy" 
             target="_blank" 
             rel="noopener noreferrer"
            
@@ -85,7 +85,7 @@ const Footer = () => {
           </a>
           
           <a 
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/company/cobanacademy" 
             target="_blank" 
             rel="noopener noreferrer"
            
@@ -103,7 +103,7 @@ const Footer = () => {
           </a>
           
           <a 
-            href="https://instagram.com" 
+            href="https://www.instagram.com/cobanacademy" 
             target="_blank" 
             rel="noopener noreferrer"
             
