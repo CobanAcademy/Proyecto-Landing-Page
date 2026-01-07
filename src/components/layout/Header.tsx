@@ -31,21 +31,19 @@ const Header = () => {
 
   return (
     <>
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      <header className={`sticky top-3 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg' 
-          : 'bg-background/90 backdrop-blur-sm border-b border-border/50'
+          ? ' backdrop-blur-md ' 
+          : 'backdrop-blur-sm  '
       }`}>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 bg-white text-black rounded-xl" >
           <div className="flex items-center justify-between h-16 md:h-20">
             
             {/* LOGO - IZQUIERDA */}
             <div className="flex items-center flex-shrink-0">
               <Link href="/" className="flex items-center space-x-3">
-                <div className="h-10 w-10 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="font-bold text-xl">Cc</span>
-                </div>
-                <span className="text-xl font-bold text-foreground hidden sm:inline">
+                <img src="/icons/CobanLogo.svg" alt="Logo" width={38} height={38} />
+                <span className="text-xl font-bold text-black  hidden sm:inline">
                   CobanAcademy
                 </span>
               </Link>

@@ -3,44 +3,102 @@ import React from 'react';
 import StatCard from '../ui/StatCard';
 
 const HeroSection = () => {
-  const stats = [
-    { value: '+80%', label: 'De incremento en probabilidades de crédito' },
-    { value: '+10.000 Bs.', label: 'Ahorro promedio en intereses' },
-    { value: '100%', label: 'Efectividad en recuperación de seguros' },
-    { value: '+2M Bs.', label: 'Ahorrados en intereses por nuestros estudiantes' },
-    // { value: '+2M Bs.', label: 'Cartera Desembolsada' },
+  // Estadísticas superiores (3 tarjetas pequeñas)
+  const topStats = [
+    { value: '+80%', label: 'De incremento en las probabilidades de obtener un crédito de acuerdo a su perfil crediticio' },
+    { value: '+10.000 Bs.', label: 'Es el ahorro promedio por cada uno de nuestros estudiantes en el pago de los intereses de sus créditos' },
+    { value: '100%', label: 'Es la efectividad en la recuperación de los seguros de vida' },
+  ];
+
+  // Estadísticas inferiores (2 tarjetas grandes)
+  const bottomStats = [
+    { value: '+2MA Bs.', label: 'Más de 2 Millones de Bolivianos ahorrados en el pago de intereses de personas que han aprendido con CobanAcademy y han tomado acción.' },
+    { value: '+0 Bs.', label: 'Más de 0 Millones de Bolivianos en carteras desembolsadas.' },
   ];
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Aprende a
-            <span className="block text-[#D455D7]">gestionar tus créditos</span>
-            como un experto
-          </h1>
-          
-          <p className="text-xl text-[#C5BFEB] mb-8 max-w-2xl mx-auto">
-            Si necesitas aprender como solicitar un crédito o como solucionar un problema con tus créditos o como ganarle al banco, llegaste al lugar correcto
-          </p>
+    <>
+      <section className="relative overflow-hidden">
+        <div className="container mx-auto px-4 py-16 md:py-24">
+          {/* Grid de 2 columnas: Texto e Imagen */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center mb-16">
+            {/* Columna izquierda: Texto y botones */}
+            <div className="text-left px-23">
+              <h1 className="text-6xl md:text-6xl font-archivo-black  mb-6 leading-tight">
+                Aprende a gestionar tus créditos como un experto
+              </h1>
+              
+              <p className="text-xl text-[#C5BFEB] mb-8 font-regular">
+                Si necesitas aprender como solicitar un crédito o como solucionar un problema con tus créditos o como ganarle al banco, llegaste al lugar correcto
+              </p>
+              
+              <div className='flex flex-col sm:flex-row gap-4'>
+                <button className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                  Descarga la app
+                </button>   
+                <button className="bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                  Contáctanos
+                </button>
+              </div>
+            </div>
 
-          <button className="bg-[#6C55D7] hover:bg-[#5C45C7] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors mb-16">
-            Descarga la app
-          </button>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <StatCard
-                key={index}
-                value={stat.value}
-                label={stat.label}
+            {/* Columna derecha: Imagen */}
+            <div className="relative">
+              <img 
+                src="/icons/AprendeGestiona.svg" 
+                alt="Persona con dinero" 
+                className="w-full h-auto rounded-lg"
               />
-            ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Sección de Estadísticas con fondo completo */}
+      <section className="bg-[#2B1B46] py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="space-y-8 max-w-7xl mx-auto">
+            {/* Primera fila: 3 estadísticas sin fondo (solo texto) */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+              {topStats.map((stat, index) => (
+                <div key={index} className="text-center px-4 pb-10">
+                  <div className="text-6xl md:text-5xl font-archivo-black  mb-3">
+                    {stat.value}
+                  </div>
+                  <p className="text-xl md:text-base  leading-relaxed">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Segunda fila: 2 tarjetas grandes con fondo púrpura */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
+              {bottomStats.map((stat, index) => (
+                <div 
+                  key={index}
+                  className="bg-[#6C55D7] hover:bg-[#5C45C7] rounded-2xl p-2 py-8  transition-colors"
+                >
+                  <div className="text-6xl md:text-6xl font-archivo-black text-white mb-4 text-center">
+                    {stat.value}
+                  </div>
+                  <p className="text-xl md:text-lg text-white text-center leading-relaxed">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Botón de descarga */}
+            <div className="flex justify-center pt-4">
+              <button className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-12 py-4 rounded-lg text-lg font-semibold transition-colors">
+                Descarga la app
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
