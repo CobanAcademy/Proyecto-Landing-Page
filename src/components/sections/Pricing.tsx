@@ -1,185 +1,137 @@
 // landing-app/src/components/sections/Pricing.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+
+type PlanColor = 'basic' | 'premium' | 'gold';
 
 interface Plan {
   name: string;
-  description: string;
-  price: number;
-  duration: string;
+  subtitle: string;
+  price: string;
+  popular?: boolean;
+  color: PlanColor;
   features: string[];
-  popular: boolean;
-  color: 'basic' | 'premium' | 'gold';
 }
 
+const plans: Plan[] = [
+  {
+    name: 'Básico',
+    subtitle: 'Acceso por 90 días',
+    price: '100',
+    color: 'basic',
+    features: ['Cursos en video', 'Consultas ilimitadas', 'Eventos en vivo'],
+  },
+  {
+    name: 'Premium',
+    subtitle: 'Acceso por 180 días + ¡Mejor Valor!',
+    price: '120',
+    popular: true,
+    color: 'premium',
+    features: ['Cursos en video', 'Consultas ilimitadas', 'Eventos en vivo'],
+  },
+  {
+    name: 'Gold / Anual',
+    subtitle: 'Acceso por 1 año (365 días)',
+    price: '150',
+    color: 'gold',
+    features: ['Cursos en video', 'Consultas ilimitadas', 'Eventos en vivo'],
+  },
+];
+
+const priceColor = (color: PlanColor) => {
+  if (color === 'premium') return 'text-white';
+  if (color === 'gold') return 'text-[#7A52C4]';
+  return 'text-[#7A52C4]';
+};
+
+const cardBg = (color: PlanColor) => {
+  if (color === 'premium') return 'bg-[#2E2257] text-white';
+  return 'bg-[#F4F1FF] text-[#2E2257]';
+};
+
+const buttonStyle = (color: PlanColor) => {
+  if (color === 'premium') {
+    return 'bg-[#EB5523] hover:bg-[#d94c1f] text-white';
+  }
+  return 'bg-[#6B54D6] hover:bg-[#5b48b7] text-white';
+};
+
 const PricingSection = () => {
-  const [isAnnual, setIsAnnual] = useState(true);
-
-  const plans: Plan[] = [
-    {
-      name: 'Básico',
-      description: 'Ideal para comenzar',
-      price: isAnnual ? 100 : 120,
-      duration: isAnnual ? '90 días' : '30 días',
-      features: [
-        'Acceso por 90 días',
-        '100+ Cursos en video',
-        'Consultas ilimitadas',
-        'Eventos en vivo',
-        'Acceso a comunidad'
-      ],
-      popular: false,
-      color: 'basic'
-    },
-    {
-      name: 'Premium',
-      description: 'Más popular - Mejor valor',
-      price: isAnnual ? 120 : 150,
-      duration: isAnnual ? '180 días' : '90 días',
-      features: [
-        'Acceso por 180 días',
-        '120+ Cursos en video',
-        'Consultas ilimitadas',
-        'Eventos en vivo exclusivos',
-        'Acceso a proveedores',
-        'Soporte prioritario 24/7'
-      ],
-      popular: true,
-      color: 'premium'
-    },
-    {
-      name: 'Gold / Anual',
-      description: 'Máximo ahorro y beneficios',
-      price: isAnnual ? 150 : 180,
-      duration: isAnnual ? '365 días' : '180 días',
-      features: [
-        'Acceso por 1 año (365 días)',
-        '150+ Cursos en video',
-        'Consultas ilimitadas VIP',
-        'Eventos en vivo premium',
-        'Acceso a proveedores premium',
-        'Soporte VIP 24/7',
-        'Mentorías personalizadas',
-        'Certificación oficial'
-      ],
-      popular: false,
-      color: 'gold'
-    }
-  ];
-
-  const getColorClass = (color: Plan['color']) => {
-    switch (color) {
-      case 'basic': return 'border-primary/30';
-      case 'premium': return 'border-accent';
-      case 'gold': return 'border-yellow-500';
-      default: return 'border-border';
-    }
-  };
-
-  const getPriceColor = (color: Plan['color']) => {
-    switch (color) {
-      case 'basic': return 'text-primary';
-      case 'premium': return 'text-accent';
-      case 'gold': return 'text-yellow-500';
-      default: return 'text-foreground';
-    }
-  };
-
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 bg-linear-to-br from-[#6C55D7] via-[#5C45C7] to-[#6C55D7]">
       <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-archivo-black text-white mb-3">
             ¡Suscríbete!
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Elige el plan que más te conviene y accede a todos nuestros beneficios
+          <p className="text-lg md:text-xl text-white/80 font-regular">
+            Elige el plan que más te conviene y accede a todos nuestros beneficios.
           </p>
-
-          {/* Toggle */}
-          <div className="inline-flex items-center bg-background p-1 rounded-lg mb-8">
-            <button
-              className={`px-6 py-2 rounded-md transition-colors ${!isAnnual ? 'bg-primary text-white' : 'text-muted-foreground'}`}
-              onClick={() => setIsAnnual(false)}
-            >
-              Mensual
-            </button>
-            <button
-              className={`px-6 py-2 rounded-md transition-colors ${isAnnual ? 'bg-primary text-white' : 'text-muted-foreground'}`}
-              onClick={() => setIsAnnual(true)}
-            >
-              Anual
-              <span className="ml-2 text-xs bg-accent text-white px-2 py-1 rounded-full">
-                -20%
-              </span>
-            </button>
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
+          {plans.map((plan, idx) => (
             <div
-              key={index}
-              className={`relative card border-2 ${getColorClass(plan.color)} ${plan.popular ? 'scale-105 shadow-2xl' : ''}`}
+              key={plan.name}
+              className={`
+                relative rounded-3xl shadow-xl p-8 md:p-9
+                border border-white/20
+                ${cardBg(plan.color)}
+                ${plan.popular ? 'scale-[1.02]' : ''}
+              `}
+              style={{ boxShadow: plan.popular ? '0 20px 50px rgba(0,0,0,0.25)' : '0 10px 30px rgba(0,0,0,0.12)' }}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full font-bold text-sm">
-                  MAS POPULAR
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#4F7BFF] text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
+                  MÁS POPULAR
                 </div>
               )}
 
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-muted-foreground">{plan.description}</p>
-                
-                <div className="my-6">
-                  <div className="flex items-center justify-center">
-                    <span className={`text-5xl font-bold ${getPriceColor(plan.color)}`}>
-                      {plan.price}
-                    </span>
-                    <div className="text-left ml-2">
-                      <div className="text-sm text-muted-foreground">Bs.</div>
-                      <div className="text-sm">/ {isAnnual ? 'año' : 'mes'}</div>
-                    </div>
-                  </div>
-                  <div className="text-sm text-muted-foreground mt-2">
-                    Acceso por {plan.duration}
-                  </div>
+              <div className="mb-6 text-center">
+                <h3 className="text-2xl md:text-3xl font-archivo-black mb-1">{plan.name}</h3>
+                <p className={`${plan.color === 'premium' ? 'text-white/80' : 'text-[#6B54D6]'} text-sm md:text-base font-semibold`}>
+                  {plan.subtitle}
+                </p>
+              </div>
+
+              <div className="mb-6 text-center">
+                <div className="flex items-center justify-center">
+                  <span className={`text-5xl md:text-6xl font-archivo-black ${priceColor(plan.color)}`}>
+                    {plan.price}
+                  </span>
+                  <span className={`${plan.color === 'premium' ? 'text-white' : 'text-[#6B54D6]'} ml-2 text-2xl font-archivo-black`}>Bs.</span>
                 </div>
               </div>
 
               <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center">
-                    <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center mr-3">
-                      <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-center text-base md:text-lg">
+                    <span className="w-6 h-6 mr-3 flex items-center justify-center rounded-full bg-white/15 text-[#32C770]">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
                       </svg>
-                    </div>
-                    <span>{feature}</span>
+                    </span>
+                    <span className={plan.color === 'premium' ? 'text-white' : 'text-[#2E2257]'}>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <button className={`w-full py-3 rounded-lg font-bold transition-colors ${
-                plan.popular 
-                  ? 'bg-accent hover:bg-accent/90 text-white' 
-                  : 'bg-primary hover:bg-primary/90 text-white'
-              }`}>
+              <button
+                className={`
+                  w-full py-3 md:py-3.5 rounded-lg font-bold
+                  transition-transform duration-200 hover:scale-[1.01]
+                  ${buttonStyle(plan.color)}
+                `}
+              >
                 Suscríbete
               </button>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground">
-            Todos los planes incluyen garantía de satisfacción de 30 días
-          </p>
-          <p className="text-sm text-muted-foreground/70 mt-2">
-            *Precios en Bolivianos (Bs.)
-          </p>
         </div>
       </div>
     </section>

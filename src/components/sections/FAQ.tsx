@@ -43,64 +43,57 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 bg-[#F6F4FD]">
       <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            ¿Tienes dudas? ¡Te las aclaramos!
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-archivo-black text-[#4F3FB6] leading-tight">
+            ¿Tienes dudas?
+            <br />
+            ¡Te las aclaramos!
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Respuestas a las preguntas más frecuentes sobre nuestros cursos y metodología
-          </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="card">
+        <div className="max-w-4xl mx-auto   ">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div
+                key={index}
+                className={`px-5 md:px-6 py-5 md:py-6 ${index !== faqs.length - 1 ? 'border-b border-[#E6E0FF]' : ''}`}
+              >
                 <button
-                  className="flex items-center justify-between w-full text-left"
+                  className="flex items-start justify-between w-full text-left gap-3"
                   onClick={() => toggleFAQ(index)}
                 >
-                  <h3 className="text-lg font-semibold pr-8">{faq.question}</h3>
-                  <div className="flex-shrink-0">
-                    <svg
-                      className={`w-6 h-6 transform transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                  <div className="flex items-start gap-4">
+                    <span className="text-[#6B54D6] font-bold text-lg md:text-xl leading-none pt-1">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div>
+                      <h3 className="text-base md:text-lg font-regular text-[#1F1D2B]">
+                        {faq.question}
+                      </h3>
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ease-out ${
+                          isOpen ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'
+                        }`}
+                      >
+                        <p className="text-sm md:text-base text-[#4A4A4A] leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </button>
-                
-                <div className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'mt-4' : 'max-h-0'}`}>
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-muted-foreground">{faq.answer}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Contact CTA */}
-          <div className="text-center mt-12">
-            <div className="card bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
-              <h3 className="text-2xl font-bold mb-4">¿No encontraste tu respuesta?</h3>
-              <p className="text-muted-foreground mb-6">
-                Contáctanos directamente y nuestro equipo te ayudará personalmente
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn-primary px-8 py-3">
-                  Contactar por WhatsApp
-                </button>
-                <button className="px-8 py-3 border-2 border-primary text-primary hover:bg-primary/10 rounded-lg font-medium transition-colors">
-                  Enviar correo
+                  <span
+                    className="text-[#6B54D6] text-2xl font-bold leading-none pt-1"
+                    aria-hidden="true"
+                  >
+                    {isOpen ? '−' : '+'}
+                  </span>
                 </button>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
