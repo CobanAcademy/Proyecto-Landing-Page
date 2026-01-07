@@ -18,12 +18,20 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative overflow-hidden">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+      <section className="relative overflow-hidden min-h-screen lg:min-h-[700px] pt-3">
+         {/* Gradiente radial de fondo - extendido */}
+         <div 
+           className="absolute -inset-4" 
+           style={{
+             background: 'radial-gradient(circle at 70% 15%, #6B54D6 0%, #2C2353 100%)'
+           }}
+         ></div>
+         
+         <div className="container mx-auto px-4 pt-20 h-full relative z-10">
           {/* Grid de 2 columnas: Texto e Imagen */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch h-full">
             {/* Columna izquierda: Texto y botones */}
-            <div className="text-left px-23">
+            <div className="text-left px-23 py-16 md:py-24 flex flex-col justify-center">
               <h1 className="text-6xl md:text-6xl font-archivo-black  mb-6 leading-tight">
                 Aprende a gestionar tus créditos como un experto
               </h1>
@@ -42,12 +50,12 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Columna derecha: Imagen */}
-            <div className="relative">
+            {/* Columna derecha: Imagen más grande */}
+            <div className="relative h-full min-h-[500px] lg:min-h-full -mr-4 lg:-mr-12">
               <img 
-                src="/icons/AprendeGestiona.svg" 
+                src="/icons/3.png" 
                 alt="Persona con dinero" 
-                className="w-full h-auto rounded-lg"
+                className="w-[120%] h-full object-cover object-center scale-110"
               />
             </div>
           </div>

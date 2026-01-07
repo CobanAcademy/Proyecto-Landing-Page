@@ -3,40 +3,37 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#2D2659] border-t border-[#3A3270]">
+    <footer className="bg-[#13121A] border-t border-[#3A3270]">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Marca */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="h-12 w-12 bg-[#6C55D7] rounded-lg flex items-center justify-center">
-                <span className="font-bold text-2xl">C</span>
-              </div>
-              <span className="text-2xl font-bold">CobanAcademy</span>
+            <img src="/letters/CobanWhite.svg" alt="Logo"  />
             </div>
-            <p className="text-[#C5BFEB]">
+            <p className="text-white font-regular">
               Aprende a gestionar tus créditos como un experto
             </p>
           </div>
 
           {/* Enlaces */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Enlaces</h3>
-            <ul className="space-y-2">
-              <li><Link href="/" className="text-[#C5BFEB] hover:text-white">Inicio</Link></li>
-              <li><Link href="/cursos" className="text-[#C5BFEB] hover:text-white">Cursos</Link></li>
-              <li><Link href="/quienes-somos" className="text-[#C5BFEB] hover:text-white">Quiénes Somos</Link></li>
-              <li><Link href="/contacto" className="text-[#C5BFEB] hover:text-white">Contacto</Link></li>
+            <h3 className="text-lg font-bold mb-4">Enlaces</h3>
+            <ul className="space-y-2 font-regular">
+              <li><Link href="/" className="text-white hover:text-white">Inicio</Link></li>
+              <li><Link href="/cursos" className="text-white hover:text-white">Cursos</Link></li>
+              <li><Link href="/quienes-somos" className="text-white hover:text-white">Quiénes Somos</Link></li>
+              <li><Link href="/contacto" className="text-white hover:text-white">Contacto</Link></li>
             </ul>
           </div>
 
           {/* Ayuda */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Ayuda</h3>
-            <ul className="space-y-2">
-              <li><Link href="/terminos" className="text-[#C5BFEB] hover:text-white">Términos y condiciones</Link></li>
-              <li><Link href="/privacidad" className="text-[#C5BFEB] hover:text-white">Políticas de privacidad</Link></li>
-              <li><Link href="/faq" className="text-[#C5BFEB] hover:text-white">Preguntas frecuentes</Link></li>
+            <h3 className="text-lg font-bold mb-4">Ayuda</h3>
+            <ul className="space-y-2 font-regular">
+              <li><Link href="/terminos" className="text-white hover:text-white">Términos y condiciones</Link></li>
+              <li><Link href="/privacidad" className="text-white hover:text-white">Políticas de privacidad</Link></li>
+              <li><Link href="/faq" className="text-white hover:text-white">Preguntas frecuentes</Link></li>
             </ul>
           </div>
 
@@ -44,23 +41,68 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Descarga la app</h3>
             <div className="space-y-4">
-              <p className="text-[#C5BFEB] mb-2">DISPONIBLE EN</p>
-              <div className="space-y-3">
-                <button className="flex items-center justify-center space-x-2 bg-black hover:bg-gray-900 text-white px-4 py-3 rounded-lg w-full">
-                  <span className="text-xl">▶</span>
-                  <span>Google Play</span>
-                </button>
-                <button className="flex items-center justify-center space-x-2 bg-black hover:bg-gray-900 text-white px-4 py-3 rounded-lg w-full">
-                  <span className="text-xl">⬇</span>
-                  <span>App Store</span>
-                </button>
+            
+              <div className="space-y-4">                
+                <img src="/icons/android.svg" alt="Logo" />
+
+                <img src="/icons/ios.svg" alt="Logo"  />
+               
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-[#3A3270] mt-8 pt-8 text-center text-[#867EA2]">
-          <p>© {new Date().getFullYear()} CobanAcademy. Todos los derechos reservados.</p>
+        {/* Iconos de redes sociales */}
+        <div className="flex justify-center items-center gap-4 mt-12 mb-8">
+          <a 
+            href="https://facebook.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+           
+          >
+            <img src="/socials/facebook.svg" alt="Facebook" className="" />
+          </a>
+          
+          <a 
+            href="https://twitter.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+           
+          >
+            <img src="/socials/Subtract.svg" alt="Twitter" className="" />
+          </a>
+          
+          <a 
+            href="https://linkedin.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+           
+          >
+            <img src="/socials/linkedin.svg" alt="LinkedIn" className="" />
+          </a>
+          
+          <a 
+            href="https://youtube.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            
+          >
+            <img src="/socials/youtube.svg" alt="YouTube" className="" />
+          </a>
+          
+          <a 
+            href="https://instagram.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            
+          >
+            <img src="/socials/instagram.svg" alt="Instagram" className="" />
+          </a>
+        </div>
+
+        <div className="border-t border-[#3A3270] mt-8 pt-8 text-center text-[#F6F4FD] font-regular ">
+          <p className=''>© {new Date().getFullYear()} Coban Academy</p>
+          <p className="">Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
