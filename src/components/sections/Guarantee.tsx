@@ -1,7 +1,12 @@
 // landing-app/src/components/sections/Guarantee.tsx
+'use client';
+
 import React from 'react';
+import { useAppDownload } from '@/utils/deviceDetection';
 
 const GuaranteeSection = () => {
+  const { handleDownload } = useAppDownload();
+  
   return (
     <section className="py-16 md:py-10 bg-white">
       <div className="container-custom">
@@ -11,7 +16,7 @@ const GuaranteeSection = () => {
             {/* Video Placeholder */}
             <div className="relative">
               <div className="bg-card border-2 border-border rounded-2xl overflow-hidden aspect-video">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
+                <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-primary/20 to-accent/20">
                   <div className="text-center">
                     <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                       <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
@@ -31,8 +36,11 @@ const GuaranteeSection = () => {
             </div>
 
             {/* CTA */}
-            <div className="text-center lg:text-left items-center flex">
-              <button className="btn-primary px-8 py-4 text-lg w-full lg:w-auto">
+            <div className="text-center flex justify-center">
+              <button 
+                onClick={handleDownload}
+                className="btn-primary px-8 py-4 text-lg"
+              >
                 Descarga la app
               </button>
             </div>

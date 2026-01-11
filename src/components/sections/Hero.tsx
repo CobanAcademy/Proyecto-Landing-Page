@@ -1,4 +1,12 @@
+'use client';
+
+import React from 'react';
+import StatCard from '../ui/StatCard';
+import { useAppDownload } from '@/utils/deviceDetection';
+
 const HeroSection = () => {
+  const { handleDownload } = useAppDownload();
+  
   const topStats = [
     { value: '+80%', label: 'Di incremento en las probabilidades de obtener un crédito de acuerdo a su perfil crediticio' },
     { value: '+10K Bs.', label: 'Es el ahorro promedio por cada uno de nuestros estudiantes en el pago de los intereses de sus créditos' },
@@ -37,12 +45,20 @@ const HeroSection = () => {
               </p>
               
               <div className='flex flex-col gap-3'>
-                <button className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-6 py-3.5 rounded-lg text-base font-semibold transition-colors w-full">
+                <button 
+                  onClick={handleDownload}
+                  className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-6 py-3.5 rounded-lg text-base font-semibold transition-colors w-full"
+                >
                   Descarga la app
                 </button>   
-                <button className="bg-white hover:bg-gray-100 text-black px-6 py-3.5 rounded-lg text-base font-semibold transition-colors w-full">
+                <a 
+                  href="https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white hover:bg-gray-100 text-black px-6 py-3.5 rounded-lg text-base font-semibold transition-colors w-full inline-block text-center"
+                >
                   Contáctanos
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -59,12 +75,20 @@ const HeroSection = () => {
               </p>
               
               <div className='flex flex-col sm:flex-row gap-4'>
-                <button className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                <button 
+                  onClick={handleDownload}
+                  className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+                >
                   Descarga la app
                 </button>   
-                <button className="bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                <a 
+                  href="https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-block text-center"
+                >
                   Contáctanos
-                </button>
+                </a>
               </div>
             </div>
 
@@ -114,7 +138,10 @@ const HeroSection = () => {
 
             {/* Botón de descarga */}
             <div className="flex justify-center pt-4 px-4">
-              <button className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-8 py-3.5 rounded-lg text-base font-semibold transition-colors w-full">
+              <button 
+                onClick={handleDownload}
+                className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-8 py-3.5 rounded-lg text-base font-semibold transition-colors w-full"
+              >
                 Descarga la app
               </button>
             </div>
@@ -152,7 +179,10 @@ const HeroSection = () => {
             </div>
 
             <div className="flex justify-center pt-4">
-              <button className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-12 py-4 rounded-lg text-lg font-semibold transition-colors">
+              <button 
+                onClick={handleDownload}
+                className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-12 py-4 rounded-lg text-lg font-semibold transition-colors"
+              >
                 Descarga la app
               </button>
             </div>

@@ -3,10 +3,12 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useAppDownload } from '@/utils/deviceDetection';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { handleDownload } = useAppDownload();
 
   // Efecto para scroll y cerrar menú en resize
   useEffect(() => {
@@ -61,12 +63,20 @@ const Header = () => {
             <div className="flex items-center space-x-2 md:space-x-3">
               {/* BOTONES CTA */}
               <div className="hidden sm:flex items-center space-x-2 md:space-x-3">
-                <button className="btn-primary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap">
+                <button 
+                  onClick={handleDownload}
+                  className="btn-primary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap"
+                >
                   Descarga la app
                 </button>
-                <button className="btn-secondary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap">
+                <a 
+                  href="https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap inline-block text-center"
+                >
                   Contáctanos
-                </button>
+                </a>
               </div>
 
               {/* BOTÓN HAMBURGUESA */}
@@ -131,7 +141,10 @@ const Header = () => {
                   
                   {/* BOTONES EN MÓVIL */}
                   <div className="flex flex-col space-y-3 pt-4 mt-4 border-t border-border/50">
-                    <button className="btn-primary w-full py-3">
+                    <button 
+                      onClick={handleDownload}
+                      className="btn-primary w-full py-3"
+                    >
                       Descarga la app
                     </button>
                     <button className="btn-secondary w-full py-3">

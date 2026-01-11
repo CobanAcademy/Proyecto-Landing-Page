@@ -1,7 +1,12 @@
 // landing-app/src/components/sections/TargetAudience.tsx
+'use client';
+
 import React from 'react';
+import { useAppDownload } from '@/utils/deviceDetection';
 
 const TargetAudienceSection = () => {
+  const { handleDownload } = useAppDownload();
+  
   const audienceTypes = [
     {
       title: 'Asalariados o dependientes',
@@ -72,7 +77,10 @@ const TargetAudienceSection = () => {
 
         {/* Botón CTA */}
         <div className="text-center mt-12">
-          <button className="bg-[#EB5523] hover:bg-[#5C45C7] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+          <button 
+            onClick={handleDownload}
+            className="bg-[#EB5523] hover:bg-[#5C45C7] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+          >
             Descarga la app
           </button>
         </div>
