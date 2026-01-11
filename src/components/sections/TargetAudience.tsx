@@ -72,7 +72,7 @@ const TargetAudienceSection = () => {
 
         {/* Botón CTA */}
         <div className="text-center mt-12">
-          <button className="bg-[#6C55D7] hover:bg-[#5C45C7] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+          <button className="bg-[#EB5523] hover:bg-[#5C45C7] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
             Descarga la app
           </button>
         </div>

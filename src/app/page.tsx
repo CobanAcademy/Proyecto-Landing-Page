@@ -8,11 +8,14 @@ import PricingSection from '@/components/sections/Pricing';
 import TestimonialsSection from '@/components/sections/Testimonials';
  import AppDownloadSection from '@/components/sections/AppDownload';
 import FAQSection from '@/components/sections/FAQ';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 
 export default function Home() {
   return (
     <>
+    <Header />
       <HeroSection />
       <HowItWorksSection />
       <GuaranteeSection />
@@ -22,6 +25,7 @@ export default function Home() {
       <TestimonialsSection />
       <AppDownloadSection />
       <FAQSection />
+      <Footer />
     </>
   );
 }

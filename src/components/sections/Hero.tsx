@@ -12,7 +12,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#6C55D7] via-[#5943B8] to-[#4A3699] min-h-screen lg:min-h-[700px] pt-3">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#6C55D7] via-[#5943B8] to-[#4A3699] min-h-screen lg:min-h-[700px] pt-18">
         <div className="container mx-auto px-4 pt-20 h-full relative z-10">
           
           {/* MOBILE LAYOUT - Imagen arriba, contenido abajo */}

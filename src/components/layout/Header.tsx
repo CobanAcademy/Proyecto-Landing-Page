@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <>
-      <header className={`sticky top-3 z-50 transition-all duration-300
+      <header className={` fixed top-2 left-0 w-full z-50 transition-all duration-300
       }`}>
         <div className="container mx-auto px-4 bg-white text-black rounded-xl" >
           <div className="flex items-center justify-between h-16 md:h-20">

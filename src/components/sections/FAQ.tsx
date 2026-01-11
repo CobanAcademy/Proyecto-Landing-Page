@@ -81,9 +81,9 @@ const FAQSection = () => {
                         <p className="text-sm md:text-base text-[#4A4A4A] leading-relaxed">
                           {faq.answer}
                         </p>
-                      </div>
-                    </div>
                   </div>
+                </div>
+              </div>
                   <span
                     className="text-[#6B54D6] text-2xl font-bold leading-none pt-1"
                     aria-hidden="true"
