@@ -32,7 +32,7 @@ interface TeamMember {
   };
 }
 
-const API_BASE_URL = 'https://api.cobanacademy.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.cobanacademy.com';
 
 const TeamSection = () => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);

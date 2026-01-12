@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import StatCard from '../ui/StatCard';
 import { useAppDownload, useAppLogs } from '@/utils/deviceDetection';
 import { ActivityCodes } from '@/utils/activityLogger';
@@ -9,18 +9,21 @@ const HeroSection = () => {
   const { handleDownload } = useAppDownload();
   const { handleLog } = useAppLogs();
   
+  // Imagen aleatoria solo en el cliente para evitar hydration mismatch
+  const [randomImage, setRandomImage] = useState('/icons/1.png'); // Default inicial
+  
+  useEffect(() => {
+    const images = ['/icons/1.png', '/icons/2.png', '/icons/3.png'];
+    const randomIndex = Math.floor(Math.random() * images.length);
+    setRandomImage(images[randomIndex]);
+  }, []); // Solo se ejecuta una vez en el cliente
+  
   // Función para contactar por WhatsApp (envía log + abre WhatsApp)
   const handleWhatsAppContact = () => {
     handleLog(ActivityCodes.CONTACT_WHATSAPP);
     const whatsappUrl = 'https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App';
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-  };
-
-  const randomImage = useMemo(() => {
-    const images = ['/icons/1.png', '/icons/2.png', '/icons/3.png'];
-    const randomIndex = Math.floor(Math.random() * images.length);
-    return images[randomIndex];
-  }, []); 
+  }; 
   
   const topStats = [
     { value: '+80%', label: 'Di incremento en las probabilidades de obtener un crédito de acuerdo a su perfil crediticio' },

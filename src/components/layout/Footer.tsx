@@ -1,7 +1,12 @@
+'use client';
 
+import React from 'react';
 import Link from 'next/link';
+import { useActivityLogger } from '@/utils/activityLogger';
 
 const Footer = () => {
+  const { logSocialClick, logSectionNavigation, logAppStoreClick } = useActivityLogger();
+  
   return (
     <footer className="bg-[#13121A] border-t border-[#3A3270]">
       <div className="container mx-auto px-4 py-12">
@@ -20,10 +25,42 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">Enlaces</h3>
             <ul className="space-y-2 font-regular">
-              <li><Link href="/" className="text-white hover:text-white">Inicio</Link></li>
-              <li><Link href="#cursos" className="text-white hover:text-white">Cursos</Link></li>
-              <li><Link href="#quienes-somos" className="text-white hover:text-white">Quiénes Somos</Link></li>
-              <li><Link href="/contacto" className="text-white hover:text-white">Contacto</Link></li>
+              <li>
+                <Link 
+                  href="/" 
+                  onClick={() => logSectionNavigation('inicio', 'footer')}
+                  className="text-white hover:text-white"
+                >
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/#como-funciona" 
+                  onClick={() => logSectionNavigation('como-funciona', 'footer')}
+                  className="text-white hover:text-white"
+                >
+                  Cursos
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/#quienes-somos" 
+                  onClick={() => logSectionNavigation('quienes-somos', 'footer')}
+                  className="text-white hover:text-white"
+                >
+                  Quiénes Somos
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/contacto" 
+                  onClick={() => logSectionNavigation('contacto', 'footer')}
+                  className="text-white hover:text-white"
+                >
+                  Contacto
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -31,9 +68,33 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">Ayuda</h3>
             <ul className="space-y-2 font-regular">
-              <li><Link href="/terminos" className="text-white hover:text-white">Términos y condiciones</Link></li>
-              <li><Link href="/privacidad" className="text-white hover:text-white">Políticas de privacidad</Link></li>
-              <li><Link href="/faq" className="text-white hover:text-white">Preguntas frecuentes</Link></li>
+              <li>
+                <Link 
+                  href="/terminos" 
+                  onClick={() => logSectionNavigation('terminos', 'footer')}
+                  className="text-white hover:text-white"
+                >
+                  Términos y condiciones
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/privacidad" 
+                  onClick={() => logSectionNavigation('privacidad', 'footer')}
+                  className="text-white hover:text-white"
+                >
+                  Políticas de privacidad
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/#ayuda" 
+                  onClick={() => logSectionNavigation('ayuda', 'footer')}
+                  className="text-white hover:text-white"
+                >
+                  Preguntas frecuentes
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -46,6 +107,7 @@ const Footer = () => {
                 href="https://play.google.com/store/apps/details?id=com.cobanacademy.cobanacademy&hl=es_BO" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                onClick={() => logAppStoreClick('android', 'footer')}
                 className="block transition-all duration-300  hover:opacity-80 cursor-pointer"
               >
                 <img src="/icons/android.svg" alt="Disponible en Google Play"  />
@@ -56,6 +118,7 @@ const Footer = () => {
                 href="https://apps.apple.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                onClick={() => logAppStoreClick('ios', 'footer')}
                 className="block transition-all duration-300  hover:opacity-80 cursor-pointer"
               >
                 <img src="/icons/ios.svg" alt="Descargar en el App Store"  />
@@ -70,7 +133,7 @@ const Footer = () => {
             href="https://www.facebook.com/cobanacademy" 
             target="_blank" 
             rel="noopener noreferrer"
-           
+            onClick={() => logSocialClick('facebook', 'footer')}
           >
             <img src="/socials/facebook.svg" alt="Facebook" className="" />
           </a>
@@ -79,7 +142,7 @@ const Footer = () => {
             href="https://x.com/CobanAcademy" 
             target="_blank" 
             rel="noopener noreferrer"
-           
+            onClick={() => logSocialClick('twitter', 'footer')}
           >
             <img src="/socials/Subtract.svg" alt="Twitter" className="" />
           </a>
@@ -88,7 +151,7 @@ const Footer = () => {
             href="https://www.linkedin.com/company/cobanacademy" 
             target="_blank" 
             rel="noopener noreferrer"
-           
+            onClick={() => logSocialClick('linkedin', 'footer')}
           >
             <img src="/socials/linkedin.svg" alt="LinkedIn" className="" />
           </a>
@@ -97,7 +160,7 @@ const Footer = () => {
             href="https://www.youtube.com/@CobanAcademy" 
             target="_blank" 
             rel="noopener noreferrer"
-            
+            onClick={() => logSocialClick('youtube', 'footer')}
           >
             <img src="/socials/youtube.svg" alt="YouTube" className="" />
           </a>
@@ -106,7 +169,7 @@ const Footer = () => {
             href="https://www.instagram.com/cobanacademy" 
             target="_blank" 
             rel="noopener noreferrer"
-            
+            onClick={() => logSocialClick('instagram', 'footer')}
           >
             <img src="/socials/instagram.svg" alt="Instagram" className="" />
           </a>

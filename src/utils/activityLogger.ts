@@ -41,6 +41,7 @@ interface ActivityLogPayload {
 
 // Configuración de la API
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.cobanacademy.com';
+const JWT_TOKEN = process.env.NEXT_PUBLIC_JWT_TOKEN || '';
 
 // Función para enviar logs de actividad
 export const activityLogs = async (
@@ -99,6 +100,10 @@ export const ActivityCodes = {
   PAGE_VIEW: 'LANDING_PAGE_START',
   DOWNLOAD_APP: 'LANDING_PAGE_DOWNLOAD_CLICK',
   CONTACT_WHATSAPP: 'LANDING_PAGE_CONTACT_US',
+  SOCIALS: 'LANDING_PAGE_SOCIALS',
+  SECTIONS: 'LANDING_PAGE_SECTIONS',
+  ANDROID_DOWNLOAD: 'LANDING_PAGE_ANDROID',
+  IOS_DOWNLOAD: 'LANDING_PAGE_IOS',
   HERO_VIEW: 'hero_view',
   PRICING_VIEW: 'pricing_view',
   FAQ_OPEN: 'faq_open',
@@ -114,6 +119,34 @@ export const useActivityLogger = () => {
     activityLogs(code, metaData);
   };
   
-  return { logActivity, ActivityCodes };
+  // Helper para loguear clicks en redes sociales
+  const logSocialClick = (network: string, source: 'header' | 'footer') => {
+    activityLogs(ActivityCodes.SOCIALS, {
+      network,      // 'facebook', 'twitter', 'linkedin', etc.
+      source,       // 'header' o 'footer'
+      action: 'social_click',
+    }, JWT_TOKEN);
+  };
+  
+  // Helper para loguear navegación a secciones
+  const logSectionNavigation = (section: string, source: 'header' | 'footer') => {
+    activityLogs(ActivityCodes.SECTIONS, {
+      section,      // 'como-funciona', 'precios', 'ayuda', etc.
+      source,       // 'header' o 'footer'
+      action: 'section_navigation',
+    }, JWT_TOKEN);
+  };
+  
+  // Helper para loguear descargas de app store
+  const logAppStoreClick = (platform: 'android' | 'ios', source: 'header' | 'footer') => {
+    const code = platform === 'android' ? ActivityCodes.ANDROID_DOWNLOAD : ActivityCodes.IOS_DOWNLOAD;
+    activityLogs(code, {
+      platform,     // 'android' o 'ios'
+      source,       // 'header' o 'footer'
+      action: 'app_store_click',
+    }, JWT_TOKEN);
+  };
+  
+  return { logActivity, logSocialClick, logSectionNavigation, logAppStoreClick, ActivityCodes };
 };
 

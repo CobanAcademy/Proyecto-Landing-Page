@@ -4,13 +4,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAppDownload, useAppLogs } from '@/utils/deviceDetection';
-import { ActivityCodes } from '@/utils/activityLogger';
+import { ActivityCodes, useActivityLogger } from '@/utils/activityLogger';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { handleDownload } = useAppDownload();
   const { handleLog } = useAppLogs();
+  const { logSectionNavigation } = useActivityLogger();
   
   // Función para contactar por WhatsApp (envía log + abre WhatsApp)
   const handleWhatsAppContact = () => {
@@ -20,6 +21,12 @@ const Header = () => {
     // 2. Abrir WhatsApp
     const whatsappUrl = 'https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App';
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+  
+  // Función para manejar clicks en navegación móvil (log + cerrar menú)
+  const handleMobileNavClick = (section: string) => {
+    logSectionNavigation(section, 'header');
+    setIsMenuOpen(false);
   };
   
   // Efecto para scroll y cerrar menú en resize
@@ -63,11 +70,41 @@ const Header = () => {
             {/* NAVEGACIÓN DESKTOP - CENTRO */}
             <div className="hidden lg:flex items-center justify-center flex-1">
               <nav className="flex items-center space-x-1 lg:space-x-2 xl:space-x-8">
-                <Link href="/" className="nav-link px-3 py-2">Inicio</Link>
-                <Link href="#como-funciona" className="nav-link px-3 py-2 scroll-smooth">Cursos</Link>
-                <Link href="#quienes-somos" className="nav-link px-3 py-2">Quiénes Somos</Link>
-                <Link href="#suscripcion" className="nav-link px-3 py-2">Suscripción</Link>
-                <Link href="#ayuda" className="nav-link px-3 py-2">Ayuda</Link>
+                <Link 
+                  href="/" 
+                  onClick={() => logSectionNavigation('inicio', 'header')}
+                  className="nav-link px-3 py-2"
+                >
+                  Inicio
+                </Link>
+                <Link 
+                  href="/#como-funciona" 
+                  onClick={() => logSectionNavigation('como-funciona', 'header')}
+                  className="nav-link px-3 py-2 scroll-smooth"
+                >
+                  Cursos
+                </Link>
+                <Link 
+                  href="/#quienes-somos" 
+                  onClick={() => logSectionNavigation('quienes-somos', 'header')}
+                  className="nav-link px-3 py-2"
+                >
+                  Quiénes Somos
+                </Link>
+                <Link 
+                  href="/#suscripcion" 
+                  onClick={() => logSectionNavigation('suscripcion', 'header')}
+                  className="nav-link px-3 py-2"
+                >
+                  Suscripción
+                </Link>
+                <Link 
+                  href="/#ayuda" 
+                  onClick={() => logSectionNavigation('ayuda', 'header')}
+                  className="nav-link px-3 py-2"
+                >
+                  Ayuda
+                </Link>
               </nav>
             </div>
 
@@ -115,35 +152,35 @@ const Header = () => {
                 <nav className="flex flex-col space-y-2">
                   <Link 
                     href="/" 
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => handleMobileNavClick('inicio')}
                     className="nav-link-mobile"
                   >
                     Inicio
                   </Link>
                   <Link 
-                    href="#como-funciona" 
-                    onClick={() => setIsMenuOpen(false)}
+                    href="/#como-funciona" 
+                    onClick={() => handleMobileNavClick('como-funciona')}
                     className="nav-link-mobile scroll-smooth"
                   >
                     Cursos
                   </Link>
                   <Link 
-                    href="#quienes-somos" 
-                    onClick={() => setIsMenuOpen(false)}
+                    href="/#quienes-somos" 
+                    onClick={() => handleMobileNavClick('quienes-somos')}
                     className="nav-link-mobile scroll-smooth"
                   >
                     Quiénes Somos
                   </Link>
                   <Link 
-                    href="#suscripcion" 
-                    onClick={() => setIsMenuOpen(false)}
+                    href="/#suscripcion" 
+                    onClick={() => handleMobileNavClick('suscripcion')}
                     className="nav-link-mobile"
                   >
                     Suscripción
                   </Link>
                   <Link 
-                    href="#ayuda" 
-                    onClick={() => setIsMenuOpen(false)}
+                    href="/#ayuda" 
+                    onClick={() => handleMobileNavClick('ayuda')}
                     className="nav-link-mobile"
                   >
                     Ayuda
