@@ -1,5 +1,5 @@
 /* Importar fuentes desde Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap');
     
 /* landing-app/src/app/globals.css */
 @import 'tailwindcss';
@@ -282,5 +282,22 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
     gap: 1.5rem;
+  }
+}
+/* Archivo Black */
+.font-archivo-black {
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 400;
+}
+
+
+/* Ocultar scrollbar pero mantener funcionalidad */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
   }
 }

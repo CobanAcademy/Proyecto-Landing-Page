@@ -70,7 +70,8 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
+        {/* DESKTOP - Grid */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
           {plans.map((plan, idx) => (
             <div
               key={plan.name}
@@ -132,6 +133,77 @@ const PricingSection = () => {
               </button>
             </div>
           ))}
+        </div>
+
+        {/* MOBILE - Slider con swipe */}
+        <div className="md:hidden -mx-4">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-4">
+            {plans.map((plan, idx) => (
+              <div 
+                key={plan.name} 
+                className="w-[calc(100%-2rem)] shrink-0 snap-center first:ml-0"
+              >
+                <div
+                  className={`
+                    relative rounded-3xl shadow-xl p-8
+                    border border-white/20
+                    ${cardBg(plan.color)}
+                    h-full
+                  `}
+                  style={{ boxShadow: plan.popular ? '0 20px 50px rgba(0,0,0,0.25)' : '0 10px 30px rgba(0,0,0,0.12)' }}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#4F7BFF] text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
+                      MÁS POPULAR
+                    </div>
+                  )}
+
+                  <div className="mb-6 text-center">
+                    <h3 className="text-2xl font-archivo-black mb-1">{plan.name}</h3>
+                    <p className={`${plan.color === 'premium' ? 'text-white/80' : 'text-[#6B54D6]'} text-sm font-semibold`}>
+                      {plan.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="mb-6 text-center">
+                    <div className="flex items-center justify-center">
+                      <span className={`text-5xl font-archivo-black ${priceColor(plan.color)}`}>
+                        {plan.price}
+                      </span>
+                      <span className={`${plan.color === 'premium' ? 'text-white' : 'text-[#6B54D6]'} ml-2 text-2xl font-archivo-black`}>Bs.</span>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-center text-base">
+                        <span className="w-6 h-6 mr-3 flex items-center justify-center rounded-full bg-white/15 text-[#32C770]">
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                        <span className={plan.color === 'premium' ? 'text-white' : 'text-[#2E2257]'}>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    className={`
+                      w-full py-3 rounded-lg font-bold
+                      transition-transform duration-200 hover:scale-[1.01]
+                      ${buttonStyle(plan.color)}
+                    `}
+                  >
+                    Suscríbete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

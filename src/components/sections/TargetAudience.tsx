@@ -47,7 +47,8 @@ const TargetAudienceSection = () => {
           ¿Para quienes son nuestros cursos?
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {/* DESKTOP - Grid */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {audienceTypes.map((audience, index) => (
             <div 
               key={index} 
@@ -73,6 +74,39 @@ const TargetAudienceSection = () => {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* MOBILE - Slider con swipe */}
+        <div className="md:hidden -mx-4">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-4">
+            {audienceTypes.map((audience, index) => (
+              <div 
+                key={index} 
+                className="w-[calc(100%-2rem)] shrink-0 snap-center first:ml-0"
+              >
+                <div className="rounded-xl p-6 border-[#6B54D6] border-2 h-full">
+                  <div className="flex flex-col items-start text-left mb-6">
+                    <div className="text-4xl mb-4">
+                      <img src={audience.icon} alt="Logo" className='' />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4">{audience.title}</h3>
+                  </div>
+                  
+                  <ul className="space-y-3">
+                    {audience.services.map((service, serviceIndex) => (
+                      <li 
+                        key={serviceIndex} 
+                        className="flex items-center text-[#C5BFEB] text-sm"
+                      >
+                        <span className="text-[#6C55D7] mr-3">✓</span>
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Botón CTA */}
