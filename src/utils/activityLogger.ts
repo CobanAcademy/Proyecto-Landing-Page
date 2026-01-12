@@ -97,7 +97,6 @@ export const activityLogs = async (
 // Códigos de actividad predefinidos (puedes expandir según necesites)
 export const ActivityCodes = {
   PAGE_VIEW: 'LANDING_PAGE_START',
- 
   DOWNLOAD_APP: 'LANDING_PAGE_DOWNLOAD_CLICK',
   CONTACT_WHATSAPP: 'LANDING_PAGE_CONTACT_US',
   HERO_VIEW: 'hero_view',

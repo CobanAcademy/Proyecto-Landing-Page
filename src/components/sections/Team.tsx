@@ -74,7 +74,7 @@ const TeamSection = () => {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-[#2E2257]">
+    <section id="quienes-somos" className="py-16 md:py-24 bg-[#2E2257]">
       <div className="mx-auto px-4 max-w-3/4">
         {/* Header */}
         <div className="text-center mb-12">

@@ -233,9 +233,9 @@ const TestimonialsSection = () => {
           <div
             className="grid grid-cols-3 gap-8"
             style={{
-              transform: desktopAnimate ? 'translateX(0)' : 'translateX(40px)',
+              transform: desktopAnimate ? 'translateX(0)' : 'translateX(80px)',
               opacity: desktopAnimate ? 1 : 0,
-              transition: 'transform 400ms ease, opacity 400ms ease',
+              transition: 'transform 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 600ms ease',
             }}
           >
             {desktopVisible.map((t, idx) => (

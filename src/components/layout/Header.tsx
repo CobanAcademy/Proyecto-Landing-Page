@@ -3,19 +3,31 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useAppDownload } from '@/utils/deviceDetection';
+import { useAppDownload, useAppLogs } from '@/utils/deviceDetection';
+import { ActivityCodes } from '@/utils/activityLogger';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { handleDownload } = useAppDownload();
-
+  const { handleLog } = useAppLogs();
+  
+  // Función para contactar por WhatsApp (envía log + abre WhatsApp)
+  const handleWhatsAppContact = () => {
+    // 1. Enviar log de actividad
+    handleLog(ActivityCodes.CONTACT_WHATSAPP);
+    
+    // 2. Abrir WhatsApp
+    const whatsappUrl = 'https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App';
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+  
   // Efecto para scroll y cerrar menú en resize
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-
+    handleLog(ActivityCodes.PAGE_VIEW);
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setIsMenuOpen(false);
@@ -52,10 +64,10 @@ const Header = () => {
             <div className="hidden lg:flex items-center justify-center flex-1">
               <nav className="flex items-center space-x-1 lg:space-x-2 xl:space-x-8">
                 <Link href="/" className="nav-link px-3 py-2">Inicio</Link>
-                <Link href="/cursos" className="nav-link px-3 py-2">Cursos</Link>
-                <Link href="/quienes-somos" className="nav-link px-3 py-2">Quiénes Somos</Link>
-                <Link href="/suscripcion" className="nav-link px-3 py-2">Suscripción</Link>
-                <Link href="/ayuda" className="nav-link px-3 py-2">Ayuda</Link>
+                <Link href="#como-funciona" className="nav-link px-3 py-2 scroll-smooth">Cursos</Link>
+                <Link href="#quienes-somos" className="nav-link px-3 py-2">Quiénes Somos</Link>
+                <Link href="#suscripcion" className="nav-link px-3 py-2">Suscripción</Link>
+                <Link href="#ayuda" className="nav-link px-3 py-2">Ayuda</Link>
               </nav>
             </div>
 
@@ -69,14 +81,12 @@ const Header = () => {
                 >
                   Descarga la app
                 </button>
-                <a 
-                  href="https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap inline-block text-center"
+                <button 
+                  onClick={handleWhatsAppContact}
+                  className="btn-primary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap"
                 >
-                  Contáctanos
-                </a>
+                  Contactanós
+                </button>
               </div>
 
               {/* BOTÓN HAMBURGUESA */}
@@ -111,28 +121,28 @@ const Header = () => {
                     Inicio
                   </Link>
                   <Link 
-                    href="/cursos" 
+                    href="#como-funciona" 
                     onClick={() => setIsMenuOpen(false)}
-                    className="nav-link-mobile"
+                    className="nav-link-mobile scroll-smooth"
                   >
                     Cursos
                   </Link>
                   <Link 
-                    href="/quienes-somos" 
+                    href="#quienes-somos" 
                     onClick={() => setIsMenuOpen(false)}
-                    className="nav-link-mobile"
+                    className="nav-link-mobile scroll-smooth"
                   >
                     Quiénes Somos
                   </Link>
                   <Link 
-                    href="/suscripcion" 
+                    href="#suscripcion" 
                     onClick={() => setIsMenuOpen(false)}
                     className="nav-link-mobile"
                   >
                     Suscripción
                   </Link>
                   <Link 
-                    href="/ayuda" 
+                    href="#ayuda" 
                     onClick={() => setIsMenuOpen(false)}
                     className="nav-link-mobile"
                   >
@@ -147,10 +157,13 @@ const Header = () => {
                     >
                       Descarga la app
                     </button>
-                    <button className="btn-secondary w-full py-3">
-                      Nuevo Botón
+                    <button 
+                      onClick={handleWhatsAppContact}
+                      className="btn-primary w-full py-3"
+                    >
+                      Contactanós
                     </button>
-                  </div>
+                  </div> 
                 </nav>
               </div>
             </div>

@@ -43,7 +43,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-[#F6F4FD]">
+    <section id="ayuda" className="py-16 md:py-24 bg-[#F6F4FD]">
       <div className="container-custom">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-archivo-black text-[#4F3FB6] leading-tight">

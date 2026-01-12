@@ -1,11 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import StatCard from '../ui/StatCard';
-import { useAppDownload } from '@/utils/deviceDetection';
+import { useAppDownload, useAppLogs } from '@/utils/deviceDetection';
+import { ActivityCodes } from '@/utils/activityLogger';
 
 const HeroSection = () => {
   const { handleDownload } = useAppDownload();
+  const { handleLog } = useAppLogs();
+  
+  // Función para contactar por WhatsApp (envía log + abre WhatsApp)
+  const handleWhatsAppContact = () => {
+    handleLog(ActivityCodes.CONTACT_WHATSAPP);
+    const whatsappUrl = 'https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App';
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const randomImage = useMemo(() => {
+    const images = ['/icons/1.png', '/icons/2.png', '/icons/3.png'];
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return images[randomIndex];
+  }, []); 
   
   const topStats = [
     { value: '+80%', label: 'Di incremento en las probabilidades de obtener un crédito de acuerdo a su perfil crediticio' },
@@ -28,7 +43,7 @@ const HeroSection = () => {
             {/* Imagen */}
             <div className="relative w-full h-[400px] -mx-4 mb-8">
               <img 
-                src="/icons/3.png" 
+                src={randomImage}
                 alt="Persona con dinero" 
                 className="w-full h-full object-cover object-center"
               />
@@ -51,14 +66,12 @@ const HeroSection = () => {
                 >
                   Descarga la app
                 </button>   
-                <a 
-                  href="https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white hover:bg-gray-100 text-black px-6 py-3.5 rounded-lg text-base font-semibold transition-colors w-full inline-block text-center"
+                <button 
+                  onClick={handleWhatsAppContact}
+                  className="bg-white hover:bg-gray-100 text-black px-6 py-3.5 rounded-lg text-base font-semibold transition-colors w-full"
                 >
                   Contáctanos
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -81,20 +94,18 @@ const HeroSection = () => {
                 >
                   Descarga la app
                 </button>   
-                <a 
-                  href="https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-block text-center"
+                <button 
+                  onClick={handleWhatsAppContact}
+                  className="bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
                 >
                   Contáctanos
-                </a>
+                </button>
               </div>
             </div>
 
             <div className="relative h-full min-h-[500px] lg:min-h-full -mr-4 lg:-mr-12">
               <img 
-                src="/icons/3.png" 
+                src={randomImage}
                 alt="Persona con dinero" 
                 className="w-[120%] h-full object-cover object-center scale-110"
               />

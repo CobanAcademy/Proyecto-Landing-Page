@@ -159,9 +159,10 @@
     font-family: 'Archivo', system-ui, -apple-system, sans-serif;
   }
 
-  /* Typography */  
+  /* Typography */
   html {
     font-size: var(--font-size);
+    scroll-behavior: smooth; /* Scroll suave para anclas */
   }
 
   h1 {

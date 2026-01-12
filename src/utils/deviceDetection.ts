@@ -43,3 +43,19 @@ export const useAppDownload = () => {
   return { handleDownload };
 };
 
+export const useAppLogs=()=>{
+  const handleLog=( code: string)=>{
+    const url=getAppStoreUrl();
+    const platform = url.includes('apple') ? 'iOS' : 'Android';
+    
+    activityLogs(code, {
+      platform,
+      url,
+      action: 'Section Navbar',
+      
+    },"37e332b9438287cca25c3f0f5df12b4b471a8d99619ed7375311a4df6488cdcf7e05a1ceed58b8c7a2c725115d0d2b4075f56e54e795dbe56b32524ae9c840af3e4cbf09bc479e55ba5f6fa12aa61c1b17a050de42fb6a9290f3712b99b08e0114c3d309103ab1c3a7fa6992a1a6b2e2ac192c93b5d6ea0cc7e210073e880fbf");
+  
+  }
+  return {handleLog};
+}
+

@@ -21,8 +21,8 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Enlaces</h3>
             <ul className="space-y-2 font-regular">
               <li><Link href="/" className="text-white hover:text-white">Inicio</Link></li>
-              <li><Link href="/cursos" className="text-white hover:text-white">Cursos</Link></li>
-              <li><Link href="/quienes-somos" className="text-white hover:text-white">Quiénes Somos</Link></li>
+              <li><Link href="#cursos" className="text-white hover:text-white">Cursos</Link></li>
+              <li><Link href="#quienes-somos" className="text-white hover:text-white">Quiénes Somos</Link></li>
               <li><Link href="/contacto" className="text-white hover:text-white">Contacto</Link></li>
             </ul>
           </div>
@@ -76,7 +76,7 @@ const Footer = () => {
           </a>
           
           <a 
-            href="https://twitter.com" 
+            href="https://x.com/CobanAcademy" 
             target="_blank" 
             rel="noopener noreferrer"
            
@@ -94,7 +94,7 @@ const Footer = () => {
           </a>
           
           <a 
-            href="https://youtube.com" 
+            href="https://www.youtube.com/@CobanAcademy" 
             target="_blank" 
             rel="noopener noreferrer"
             
