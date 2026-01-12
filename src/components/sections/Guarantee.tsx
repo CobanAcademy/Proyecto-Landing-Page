@@ -5,10 +5,10 @@ import React, { useEffect, useRef } from 'react';
 import { useAppDownload } from '@/utils/deviceDetection';
 
 const VIDEO_CONFIG = {
-  url: 'https://stream.mux.com/W75nYyVcMo202NESuyGv8d02HKIvZG3mG8t1phX02PMgnU.m3u8',
+  url: 'https://stream.mux.com/qis00y3S3bXGA7C36mFdgdGS4xuvW9NqORrT00Hc00u9wM.m3u8',
   title: 'Ver testimonio de éxito',
   showNewBadge: true,
-  poster: 'https://image.mux.com/W75nYyVcMo202NESuyGv8d02HKIvZG3mG8t1phX02PMgnU/thumbnail.jpg',
+  poster: 'https://image.mux.com/qis00y3S3bXGA7C36mFdgdGS4xuvW9NqORrT00Hc00u9wM/thumbnail.jpg',
 };
 
 const GuaranteeSection = () => {
