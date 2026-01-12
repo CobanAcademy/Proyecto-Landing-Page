@@ -1,4 +1,4 @@
-import React from 'react';
+
 import HeroSection from '@/components/sections/Hero';
 import HowItWorksSection from '@/components/sections/HowltWorks';
 import TeamSection from '@/components/sections/Team';
