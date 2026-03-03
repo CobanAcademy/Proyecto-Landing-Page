@@ -1,0 +1,24 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto a tu rama principal si no es "main"
+jobs:
+  deploy:
+   runs-on: ubuntu-24.04
+   steps:
+     - name: Checkout code
+       uses: actions/checkout@v2
+     - name: Install sshpass
+       run: sudo apt-get install sshpass
+     - name: Deploy to VPS
+       run: |
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_NAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          cd Proyecto-Landing-Page/  
+          pm2 delete CobanAcademyLanding 
+          git pull origin main 
+          npm install  
+          npm run build 
+          pm2 start npm --name "CobanAcademyLanding" -- run start 
+        EOF
