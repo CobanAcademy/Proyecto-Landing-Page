@@ -23,10 +23,10 @@
     }, []); // Solo se ejecuta una vez en el cliente
     
     // Función para contactar por WhatsApp (envía log + abre WhatsApp)
-    const handleWhatsAppContact = () => {
-      handleLog(ActivityCodes.CONTACT_WHATSAPP);
-      const whatsappUrl = 'https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App';
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    const handleWebApp = () => {
+      handleLog(ActivityCodes.WEB_APP);
+    const webapp = 'https://app.cobanacademy.com';
+    window.open(webapp, '_blank', 'noopener,noreferrer');
     }; 
     
     const topStats = [
@@ -74,10 +74,10 @@
                   Descarga la app
                 </button>   
                 <button 
-                  onClick={handleWhatsAppContact}
+                  onClick={handleWebApp}
                   className="bg-white hover:bg-gray-100 text-[#1F1F1F] px-6 py-4 rounded-xl text-base font-bold transition-colors w-full shadow-xl"
                 >
-                  Contáctanos
+                  Ingresar
                 </button>
               </div>
             </div>
@@ -105,10 +105,10 @@
                     Descarga la app
                   </button>   
                   <button 
-                    onClick={handleWhatsAppContact}
-                    className="bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+                    onClick={handleWebApp}
+                    className="bg-white hover:bg-white/70 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
                   >
-                    Contáctanos
+                    Ingresar
                   </button>
                 </div>
               </div>

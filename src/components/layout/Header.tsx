@@ -22,6 +22,14 @@ const Header = () => {
     const whatsappUrl = 'https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App';
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
+    const handleWebApp= () => {
+    // 1. Enviar log de actividad
+    handleLog(ActivityCodes.WEB_APP);
+    
+    // 2. Abrir WhatsApp
+    const webapp = 'https://app.cobanacademy.com';
+    window.open(webapp, '_blank', 'noopener,noreferrer');
+  };
   
   // Función para manejar clicks en navegación móvil (log + cerrar menú)
   const handleMobileNavClick = (section: string) => {
@@ -118,11 +126,11 @@ const Header = () => {
                 >
                   Descarga la app
                 </button>
-                <button 
-                  onClick={handleWhatsAppContact}
+                 <button 
+                  onClick={handleWebApp}
                   className="btn-primary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap"
                 >
-                  Contactanós
+                  Ingresar
                 </button>
               </div>
 
@@ -195,10 +203,10 @@ const Header = () => {
                       Descarga la app
                     </button>
                     <button 
-                      onClick={handleWhatsAppContact}
+                      onClick={handleWebApp}
                       className="btn-primary w-full py-3"
                     >
-                      Contactanós
+                      Ingresar
                     </button>
                   </div> 
                 </nav>
