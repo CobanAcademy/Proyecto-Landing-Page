@@ -67,10 +67,10 @@ const Header = () => {
             
             {/* LOGO - IZQUIERDA */}
             <div className="flex items-center flex-shrink-0">
-              <Link href="/" className="flex items-center space-x-3">
+              <Link href="/" className="flex items-center space-x-1">
                 <img src="/icons/CobanLogo.svg" alt="Logo" width={38} height={38} />
                 <span className="text-xl font-bold text-black  hidden sm:inline">
-                  CobanAcademy
+                  obanacademy
                 </span>
               </Link>
             </div>

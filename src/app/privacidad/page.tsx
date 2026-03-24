@@ -14,8 +14,8 @@ const PrivacyPolicy = () => {
         <strong>Política de privacidad</strong>
       </h1>
       <p>
-        A nombre de <strong>Coban Academy</strong> te damos la bienvenida.{" "}
-        <strong>En Coban Academy</strong> (<strong>&ldquo;Coban&rdquo;</strong>,{" "}
+        A nombre de <strong>cobanacademy</strong> te damos la bienvenida.{" "}
+        <strong>En cobanacademy</strong> (<strong>&ldquo;Coban&rdquo;</strong>,{" "}
         <strong>&ldquo;nosotros&rdquo;</strong>, <strong>&ldquo;nos&rdquo;</strong>
         ), respetamos la privacidad del usuario y queremos que comprenda cómo
         recopilamos, utilizamos y compartimos sus datos...

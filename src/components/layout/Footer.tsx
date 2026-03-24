@@ -176,7 +176,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-[#3A3270] mt-8 pt-8 text-center text-[#F6F4FD] font-regular ">
-          <p className=''>© {new Date().getFullYear()} Coban Academy</p>
+          <p className=''>© {new Date().getFullYear()} cobanacademy</p>
           <p className="">Todos los derechos reservados.</p>
         </div>
       </div>

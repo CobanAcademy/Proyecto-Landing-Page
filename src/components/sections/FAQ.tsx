@@ -13,8 +13,8 @@ const FAQSection = () => {
 
   const faqs: FAQItem[] = [
     {
-      question: '¿Cobanacademy es un banco o me prestará dinero directamente?',
-      answer: 'No, CobanAcademy es una plataforma educativa. No somos un banco ni prestamos dinero directamente. Te enseñamos las estrategias para que puedas acceder a créditos bancarios en mejores condiciones.'
+      question: '¿cobanacademy es un banco o me prestará dinero directamente?',
+      answer: 'No, cobanacademy es una plataforma educativa. No somos un banco ni prestamos dinero directamente. Te enseñamos las estrategias para que puedas acceder a créditos bancarios en mejores condiciones.'
     },
     {
       question: 'Soy trabajador independiente/freelancer y mis ingresos varían. ¿Esto me sirve?',

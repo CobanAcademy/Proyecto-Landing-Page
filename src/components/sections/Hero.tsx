@@ -36,7 +36,7 @@
     ];
 
     const bottomStats = [
-      { value: '+2M Bs.', label: 'Más de 2 Millones de Bolivianos ahorrados en el pago de intereses de personas que han aprendido con CobanAcademy y han tomado acción.' },
+      { value: '+2M Bs.', label: 'Más de 2 Millones de Bolivianos ahorrados en el pago de intereses de personas que han aprendido con cobanacademy y han tomado acción.' },
       { value: '+0 Bs.', label: 'Más de 0 Millones de Bolivianos en carteras desembolsadas.' },
     ];
 

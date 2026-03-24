@@ -6,7 +6,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'CobanAcademy',
+  title: 'Cobanacademy',
   description: 'Si necesitas aprender cómo solicitar un crédito o cómo solucionar un problema con tus créditos, llegaste al lugar correcto.',
   keywords: 'créditos, finanzas, educación financiera, bancos, préstamos',
 };

@@ -14,7 +14,7 @@ const TermsAndConditions = () => {
         <strong>Términos y condiciones</strong>
       </h1>
       <p>
-        Bienvenido a <strong>Coban Academy</strong>. Al acceder y utilizar
+        Bienvenido a <strong>cobanacademy</strong>. Al acceder y utilizar
         nuestros servicios, usted acepta estar sujeto a los siguientes términos
         y condiciones de uso.
       </p>
@@ -25,7 +25,7 @@ const TermsAndConditions = () => {
         </li>
       </ol>
       <p>
-        Al acceder y utilizar los servicios de <strong>Coban Academy</strong>,
+        Al acceder y utilizar los servicios de <strong>cobanacademy</strong>,
         usted acepta cumplir y estar sujeto a estos Términos y Condiciones.
         Si no está de acuerdo con alguno de estos términos, no debe utilizar
         nuestros servicios.
@@ -37,7 +37,7 @@ const TermsAndConditions = () => {
         </li>
       </ol>
       <p>
-        <strong>Coban Academy</strong> es una plataforma educativa que ofrece
+        <strong>cobanacademy</strong> es una plataforma educativa que ofrece
         cursos y contenido relacionado con la gestión de créditos y finanzas
         personales. Nuestros servicios incluyen:
       </p>
@@ -82,7 +82,7 @@ const TermsAndConditions = () => {
         </li>
       </ol>
       <p>
-        <strong>Coban Academy</strong> ofrece diferentes planes de
+        <strong>cobanacademy</strong> ofrece diferentes planes de
         suscripción:
       </p>
       <ul>
@@ -134,9 +134,9 @@ const TermsAndConditions = () => {
         </li>
       </ol>
       <p>
-        Todo el contenido disponible en <strong>Coban Academy</strong>,
+        Todo el contenido disponible en <strong>cobanacademy</strong>,
         incluyendo pero no limitado a textos, gráficos, logotipos, videos,
-        audio y software, es propiedad de <strong>Coban Academy</strong> o de
+        audio y software, es propiedad de <strong>cobanacademy</strong> o de
         sus proveedores de contenido y está protegido por las leyes de
         propiedad intelectual.
       </p>
@@ -181,7 +181,7 @@ const TermsAndConditions = () => {
         </li>
       </ol>
       <p>
-        <strong>Coban Academy</strong> se reserva el derecho de modificar,
+        <strong>cobanacademy</strong> se reserva el derecho de modificar,
         suspender o discontinuar cualquier aspecto de nuestros servicios en
         cualquier momento, con o sin previo aviso. No seremos responsables ante
         usted o cualquier tercero por cualquier modificación, suspensión o
@@ -194,7 +194,7 @@ const TermsAndConditions = () => {
         </li>
       </ol>
       <p>
-        En la medida máxima permitida por la ley, <strong>Coban Academy</strong>
+        En la medida máxima permitida por la ley, <strong>cobanacademy</strong>
         , sus directores, empleados, socios y agentes no serán responsables de:
       </p>
       <ul>
@@ -219,7 +219,7 @@ const TermsAndConditions = () => {
       </ol>
       <p>
         Usted acepta indemnizar y mantener indemne a{" "}
-        <strong>Coban Academy</strong>, sus directores, empleados y agentes de
+        <strong>cobanacademy</strong>, sus directores, empleados y agentes de
         cualquier reclamación, pérdida, responsabilidad, daño o gasto
         (incluyendo honorarios legales) que surjan de:
       </p>
@@ -246,7 +246,7 @@ const TermsAndConditions = () => {
         </li>
       </ol>
       <p>
-        <strong>Coban Academy</strong> se reserva el derecho de modificar estos
+        <strong>cobanacademy</strong> se reserva el derecho de modificar estos
         Términos y Condiciones en cualquier momento. Las modificaciones entrarán
         en vigor inmediatamente después de su publicación en la plataforma. Su
         uso continuado de los servicios después de cualquier modificación
