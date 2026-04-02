@@ -4,11 +4,38 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
+const siteUrl = 'https://cobanacademy.com/';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Cobanacademy',
   description: 'Si necesitas aprender cómo solicitar un crédito o cómo solucionar un problema con tus créditos, llegaste al lugar correcto.',
   keywords: 'créditos, finanzas, educación financiera, bancos, préstamos',
+  openGraph: {
+    title: 'Cobanacademy',
+    description: 'Aprende a gestionar tus créditos.',
+    url: '/',
+    siteName: 'Cobanacademy',
+    images: [
+      {
+        url: '/coban_logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Cobanacademy',
+      },
+    ],
+    locale: 'es_ES',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cobanacademy',
+    description: 'Aprende a gestionar tus créditos.',
+    images: ['/coban_logo.png'],
+  },
+  icons: {
+    icon: '/coban_logo.png',
+  },
 };
 
 export default function RootLayout({
