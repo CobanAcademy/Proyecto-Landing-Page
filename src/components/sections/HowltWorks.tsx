@@ -30,7 +30,7 @@ const HowItWorksSection = () => {
           Te explicamos en tres pasos:
           </p>
         </div>
-
+ 
         {/* Cards PRINCIPALES - Altura fija en desktop, flexible en móvil */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {steps.map((step, index) => (
