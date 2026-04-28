@@ -206,6 +206,16 @@
                 >
                   Descarga la app
                 </button>
+                </div>
+
+                {/* Botones para cursos */}
+                <div className="flex flex-col md:flex-row justify-center gap-4 mt-6">
+                  <a href="/curso1" className="bg-[#6C55D7] hover:bg-[#5943B8] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors text-center shadow-lg border border-[#EB5523]">
+                    Curso Intensivo Virtual por Zoom
+                  </a>
+                  <a href="/curso2" className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors text-center shadow-lg border border-[#6C55D7]">
+                    Curso Intensivo Virtual - Todo lo que necesitas saber
+                  </a>
               </div>
             </div>
           </div>
