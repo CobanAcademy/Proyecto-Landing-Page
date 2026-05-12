@@ -15,10 +15,9 @@ jobs:
      - name: Deploy to VPS
        run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_NAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd Proyecto-Landing-Page/  
-          pm2 delete CobanAcademyLanding 
+          cd coban-proyecto-landing-page/  
           git pull origin main 
           npm install  
           npm run build 
-          pm2 start npm --name "CobanAcademyLanding" -- run start 
+          pm2 reload 5
         EOF

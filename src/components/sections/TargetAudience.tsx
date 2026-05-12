@@ -2,11 +2,18 @@
 'use client';
 
 import React from 'react';
-import { useAppDownload } from '@/utils/deviceDetection';
+import { useAppDownload, useAppLogs } from '@/utils/deviceDetection';
+  import { ActivityCodes } from '@/utils/activityLogger';
 
 const TargetAudienceSection = () => {
   const { handleDownload } = useAppDownload();
-  
+      const { handleLog } = useAppLogs();
+      
+      const handleWebApp = () => {
+        handleLog(ActivityCodes.WEB_APP);
+      const webapp = 'https://app.cobanacademy.com';
+      window.open(webapp, '_blank', 'noopener,noreferrer');
+      }; 
   const audienceTypes = [
     {
       title: 'Asalariados o dependientes',
@@ -110,13 +117,19 @@ const TargetAudienceSection = () => {
         </div>
 
         {/* Botón CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 flex flex-row  gap-3 items-center align-center justify-center">
           <button 
             onClick={handleDownload}
             className="bg-[#EB5523] hover:bg-[#5C45C7] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
           >
             Descarga la app
           </button>
+                          <button 
+                  onClick={handleWebApp}
+                className="bg-white hover:bg-[#5C45C7] text-[#1F1F1F] px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+                >
+                  Ingresar
+                </button>
         </div>
       </div>
     </section>
@@ -124,3 +137,7 @@ const TargetAudienceSection = () => {
 };
 
 export default TargetAudienceSection;
+
+function handleLog(WEB_APP: string) {
+  throw new Error('Function not implemented.');
+}

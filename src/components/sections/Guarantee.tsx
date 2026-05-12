@@ -2,7 +2,8 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { useAppDownload } from '@/utils/deviceDetection';
+import { useAppDownload, useAppLogs } from '@/utils/deviceDetection';
+import { ActivityCodes } from '@/utils/activityLogger';
 
 const VIDEO_CONFIG = {
   url: 'https://stream.mux.com/qis00y3S3bXGA7C36mFdgdGS4xuvW9NqORrT00Hc00u9wM.m3u8',
@@ -13,8 +14,14 @@ const VIDEO_CONFIG = {
 
 const GuaranteeSection = () => {
   const { handleDownload } = useAppDownload();
+        const { handleLog } = useAppLogs();
+        
   const videoRef = useRef<HTMLVideoElement>(null);
-  
+      const handleWebApp = () => {
+        handleLog(ActivityCodes.WEB_APP);
+      const webapp = 'https://app.cobanacademy.com';
+      window.open(webapp, '_blank', 'noopener,noreferrer');
+      }; 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -84,13 +91,19 @@ const GuaranteeSection = () => {
             </div>
 
             {/* CTA */}
-            <div className="text-center flex justify-center">
+            <div className="text-center flex flex-row gap-3 justify-center">
               <button 
                 onClick={handleDownload}
                 className="btn-primary px-8 py-4 text-lg"
               >
                 Descarga la app
               </button>
+                <button 
+                  onClick={handleWebApp}
+                  className="btn-primary px-3 py-2 text-sm md:px-4 md:py-2.5 md:text-base whitespace-nowrap"
+                >
+                  Ingresar
+                </button>
             </div>
           </div>
         </div>
@@ -100,3 +113,7 @@ const GuaranteeSection = () => {
 };
 
 export default GuaranteeSection;
+
+function handleLog(WEB_APP: string) {
+  throw new Error('Function not implemented.');
+}

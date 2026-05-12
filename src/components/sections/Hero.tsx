@@ -165,6 +165,12 @@
                 >
                   Descarga la app
                 </button>
+                                  <button 
+                    onClick={handleWebApp}
+                    className="bg-white hover:bg-white/70 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors w-full"
+                  >
+                    Ingresar
+                  </button>
               </div>
             </div>
 
@@ -199,13 +205,19 @@
                 ))}
               </div>
 
-              <div className="flex justify-center pt-4">
+              <div className="flex justify-center-safe pt-4 flex-col gap-3 align-center">
                 <button 
                   onClick={handleDownload}
                   className="bg-[#EB5523] hover:bg-[#d44a1f] text-white px-12 py-4 rounded-lg text-lg font-semibold transition-colors"
                 >
                   Descarga la app
                 </button>
+                                                  <button 
+                    onClick={handleWebApp}
+                    className="bg-white hover:bg-white/70 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors "
+                  >
+                    Ingresar
+                  </button>
                 </div>
 
                 {/* Botones para cursos */}
