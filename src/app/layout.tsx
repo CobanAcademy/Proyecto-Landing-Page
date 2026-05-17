@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description: 'Aprende a gestionar tus créditos.',
     url: '/',
     siteName: 'Cobanacademy',
-    images: [
+    images: [ 
       {
         url: '/coban_logo.png',
         width: 1200,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cobanacademy',
+    title: 'Cobanacademy',  
     description: 'Aprende a gestionar tus créditos.',
     images: ['/coban_logo.png'],
   },

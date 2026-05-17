@@ -8,7 +8,6 @@
   const HeroSection = () => {
     const { handleDownload } = useAppDownload();
     const { handleLog } = useAppLogs();
-    
     // Imágenes aleatorias solo en el cliente para evitar hydration mismatch
     const [randomImageDesktop, setRandomImageDesktop] = useState('/icons/1.png'); // Default desktop
     const [randomImageMobile, setRandomImageMobile] = useState('/icons/1-1.png'); // Default mobile
