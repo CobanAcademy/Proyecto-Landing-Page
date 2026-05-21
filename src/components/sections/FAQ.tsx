@@ -1,7 +1,7 @@
 // landing-app/src/components/sections/FAQ.tsx
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface FAQItem {
   question: string;
@@ -13,29 +13,34 @@ const FAQSection = () => {
 
   const faqs: FAQItem[] = [
     {
-      question: '¿cobanacademy es un banco o me prestará dinero directamente?',
-      answer: 'No, cobanacademy es una plataforma educativa. No somos un banco ni prestamos dinero directamente. Te enseñamos las estrategias para que puedas acceder a créditos bancarios en mejores condiciones.'
+      question: "¿Cobanacademy es una entidad financiera?",
+      answer:
+        "No, Cobanacademy es una plataforma educativa dedicada a crear y difundir contenido especializado en todo lo relacionado al área crediticia, a través de cursos en video, shorts y podcasts.",
     },
     {
-      question: 'Soy trabajador independiente/freelancer y mis ingresos varían. ¿Esto me sirve?',
-      answer: '¡Absolutamente! Especializamos en casos como el tuyo. Te enseñamos cómo documentar y presentar tus ingresos variables ante los bancos para aumentar tus probabilidades de aprobación.'
+      question: "¿El contenido está basado en la normativa vigente en Bolivia?",
+      answer:
+        "Todo el contenido está basado en la normativa vigente en Bolivia, específicamente, en la Ley N° 393, Ley N° 453, Ley N° 14379, el Reglamento de Protección del Consumidor de Servicios Financieros, el Reglamento de Contratos y las circulares ASFI.",
     },
     {
-      question: '¿Qué diferencia hay entre los cursos grabados y las consultas en vivo?',
-      answer: 'Los cursos grabados son el contenido base que puedes ver a tu ritmo. Las consultas en vivo son sesiones interactivas donde resolvemos dudas específicas y casos particulares en tiempo real.'
+      question: "¿Cobanacademy otorga créditos?",
+      answer: "No, Cobanacademy no otorga ningún tipo de crédito.",
     },
     {
-      question: '¿Cuánto tiempo tarda en verse resultados?',
-      answer: 'La mayoría de nuestros estudiantes ven mejoras en su perfil crediticio en 3-6 meses. Los resultados dependen de la consistencia en aplicar lo aprendido.'
+      question: "¿Se debe pagar para acceder a los cursos de Cobanacademy?",
+      answer:
+        "Sí, para acceder a los cursos completos de la plataforma, es necesario suscribirse a cualquiera de los planes que están vigentes.",
     },
     {
-      question: '¿Ofrecen garantía de aprobación de créditos?',
-      answer: 'Ofrecemos garantía de satisfacción con el contenido. Si completas al menos un curso y no estás satisfecho, te reembolsamos. La aprobación de créditos depende de cada caso y institución financiera.'
+      question: "¿Qué otros servicios ofrece Cobanacademy?",
+      answer:
+        "Cobanacademy, además de los cursos en video, ofrece el servicio de asesorías especializadas en temas crediticios.",
     },
     {
-      question: '¿Los cursos están actualizados a las leyes actuales?',
-      answer: 'Sí, actualizamos nuestro contenido constantemente según los cambios en regulaciones financieras y políticas bancarias en Bolivia.'
-    }
+      question: "¿Cómo se accede a las asesorías?",
+      answer:
+        "Para acceder a las asesorías, se las debe solicitar mediante el botón “Solicitar asesoría” que está ubicado en la parte final de cada curso.",
+    },
   ];
 
   const toggleFAQ = (index: number) => {
@@ -59,15 +64,13 @@ const FAQSection = () => {
             return (
               <div
                 key={index}
-                className={`px-5 md:px-6 py-5 md:py-6 ${index !== faqs.length - 1 ? 'border-b border-[#E6E0FF]' : ''}`}
-              >
+                className={`px-5 md:px-6 py-5 md:py-6 ${index !== faqs.length - 1 ? "border-b border-[#E6E0FF]" : ""}`}>
                 <button
                   className="flex items-start justify-between w-full text-left gap-3"
-                  onClick={() => toggleFAQ(index)}
-                >
+                  onClick={() => toggleFAQ(index)}>
                   <div className="flex items-start gap-4">
                     <span className="text-[#6B54D6] font-bold text-lg md:text-xl leading-none pt-1">
-                      {String(index + 1).padStart(2, '0')}
+                      {String(index + 1).padStart(2, "0")}
                     </span>
                     <div>
                       <h3 className="text-base md:text-lg font-regular text-[#1F1D2B]">
@@ -75,20 +78,20 @@ const FAQSection = () => {
                       </h3>
                       <div
                         className={`overflow-hidden transition-all duration-300 ease-out ${
-                          isOpen ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'
-                        }`}
-                      >
+                          isOpen
+                            ? "max-h-40 opacity-100 mt-3"
+                            : "max-h-0 opacity-0"
+                        }`}>
                         <p className="text-sm md:text-base text-[#4A4A4A] leading-relaxed">
                           {faq.answer}
                         </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
                   <span
                     className="text-[#6B54D6] text-2xl font-bold leading-none pt-1"
-                    aria-hidden="true"
-                  >
-                    {isOpen ? '−' : '+'}
+                    aria-hidden="true">
+                    {isOpen ? "−" : "+"}
                   </span>
                 </button>
               </div>
