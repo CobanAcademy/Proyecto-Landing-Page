@@ -1,22 +1,25 @@
-import React from 'react';
+import React from "react";
 
 const HowItWorksSection = () => {
   const steps = [
     {
-      icon:"/icons/search.svg",
-      title: 'IDENTIFICA',
-      description: 'A través de nuestra tecnología identificamos tu perfil crediticio.'
+      icon: "/icons/search.svg",
+      title: "RETROALIMENTACIÓN Y CERTIFICACIÓN",
+      description:
+        "De acuerdo a tu aprovechamiento, en base a una prueba voluntaria para medir tu aprendizaje, podrás acceder a tu certificado digital.",
     },
     {
-       icon:"/icons/screen.svg",
-      title: 'CONTENIDO',
-      description: 'En base a tu perfil crediticio ponemos a tu disposición los cursos en video pregrabados y lives y eventos en vivo, adecuados para vos.'
+      icon: "/icons/screen.svg",
+      title: "CONTENIDO",
+      description:
+        "En base a tu perfil crediticio ponemos a tu disposición nuestros cursos en video pregrabados, podcast, short y nuestros casos de usos ajustados a tus necesidades y expectativas fundamentado en las leyes, normativas y procedimientos bolivianos.",
     },
     {
-       icon:"/icons/headset.svg",
-      title: 'ACOMPAÑAMIENTO',
-      description: 'Ponemos a tu disposición nuestro soporte técnico 24/7 para consultas gratuitas, eventos en vivo, asesorías de pago y el acceso a proveedores de acuerdo a tu perfil crediticio.'
-    }
+      icon: "/icons/headset.svg",
+      title: "ACOMPAÑAMIENTO",
+      description:
+        "Ponemos a tu disposición nuestro soporte técnico 24/7, sección de comentarios y preguntas, acceso a proveedores de acuerdo a tu perfil crediticio y asesorías especializadas pagadas.",
+    },
   ];
 
   return (
@@ -27,15 +30,15 @@ const HowItWorksSection = () => {
             ¿Cómo funciona cobanacademy?
           </h2>
           <p className="text-xl  max-w-3xl mx-auto text-[#6B54D6]">
-          Te explicamos en tres pasos:
+            Te explicamos en tres pasos:
           </p>
         </div>
- 
+
         {/* Cards PRINCIPALES - Altura fija en desktop, flexible en móvil */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {steps.map((step, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="
                 bg-[#6B54D6] border border-border rounded-xl 
                 p-6 md:p-8 
@@ -48,15 +51,15 @@ const HowItWorksSection = () => {
                 md:min-h-[320px]
                 w-full
                 text-white  
-              "
-            >
+              ">
               {/* NÚMERO GRANDE - Como en tu diseño actual */}
               <div className="mb-4 md:mb-6 flex items-center justify-center ">
-                <img src={step.icon} alt="Logo" className='' />
+                <img src={step.icon} alt="Logo" className="" />
               </div>
-              
+
               {/* TÍTULO GRANDE - Manteniendo tu estilo */}
-              <h3 className="
+              <h3
+                className="
                 text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6
                 leading-tight
                 text-center
@@ -68,10 +71,11 @@ const HowItWorksSection = () => {
               ">
                 {step.title}
               </h3>
-              
+
               {/* TEXTO DE ACOMPAÑAMIENTO */}
               <div className="flex-1">
-                <p className="
+                <p
+                  className="
                  
                   text-lg md:text-lg
                   leading-relaxed
@@ -87,7 +91,7 @@ const HowItWorksSection = () => {
                   {step.description}
                 </p>
               </div>
-              
+
               {/* Separador decorativo (solo desktop) */}
               <div className="hidden md:block mt-6 pt-4 border-t border-border/30">
                 <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/50 rounded-full"></div>
@@ -98,14 +102,13 @@ const HowItWorksSection = () => {
 
         {/* ESPACIO ENTRE SECCIONES */}
         <div className="my-10 md:my-10">
-          <div className="flex items-center justify-center">
-
-          </div>
+          <div className="flex items-center justify-center"></div>
         </div>
 
         {/* Card de GARANTÍA - Diseño especial */}
         <div className="max-w-4xl mx-auto">
-          <div className="
+          <div
+            className="
             bg-[#2B1B46]
             border-2 border-primary/30 rounded-2xl 
             p-8 md:p-10
@@ -115,14 +118,15 @@ const HowItWorksSection = () => {
             
           ">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                {/* Contenido izquierdo */}
+              {/* Contenido izquierdo */}
               <div className="">
-               <img src="icons/garantizar.svg" alt="Logo" className='' />
+                <img src="icons/garantizar.svg" alt="Logo" className="" />
               </div>
-            {/* Contenido izquierdo */}
+              {/* Contenido izquierdo */}
               <div className="flex-1">
                 {/* Título */}
-                <h3 className="
+                <h3
+                  className="
                   text-xl md:text-2xl font-bold text-foreground mb-4
                   leading-tight
                   font-archivo-black
@@ -131,29 +135,30 @@ const HowItWorksSection = () => {
                 ">
                   RESULTADOS GARANTIZADOS
                 </h3>
-                
+
                 {/* Descripción */}
-                <p className="
+                <p
+                  className="
                   text-lg  mb-6
                   leading-relaxed
                   font-regular
                 text-white
                   
                 ">
-                  ¿No quedaste satisfecho?1 te reembolsamos tu suscripción. 
-                  El único requisito es haber completado al menos un curso y compartirnos el motivo para ayudarnos a mejorar.
+                  ¿No quedaste satisfecho?1 te reembolsamos tu suscripción. El
+                  único requisito es haber completado al menos un curso y
+                  compartirnos el motivo para ayudarnos a mejorar.
                 </p>
-                
               </div>
-              
+
               {/* Lado derecho - CTA */}
-             
             </div>
-            
+
             {/* Nota final (solo móvil) */}
             <div className="mt-8 pt-6 border-t border-primary/20 md:hidden">
               <p className="text-center text-muted-foreground text-sm">
-                "La única academia con garantía de resultados en educación financiera"
+                "La única academia con garantía de resultados en educación
+                financiera"
               </p>
             </div>
           </div>
@@ -163,4 +168,4 @@ const HowItWorksSection = () => {
   );
 };
 
-export default HowItWorksSection;  
+export default HowItWorksSection;

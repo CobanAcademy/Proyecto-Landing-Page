@@ -32,24 +32,25 @@ const HeroSection = () => {
     {
       value: "+80%",
       label:
-        "Di incremento en las probabilidades de obtener un crédito de acuerdo a su perfil crediticio",
+        "De incremento en las probabilidades de obtener un crédito de acuerdo a tu perfil crediticio aplicando nuestro método de bancarización.",
     },
     {
-      value: "+10K Bs.",
+      value: "+25Mil Bs.",
       label:
-        "Es el ahorro promedio por cada uno de nuestros estudiantes en el pago de los intereses de sus créditos",
+        "Es el ahorro promedio que han logrado nuestros estudiantes en el pago de los intereses y seguros con nuestro método de amortización de tres pasos.",
     },
     {
       value: "100%",
-      label: "Es la efectividad en la recuperación de los seguros de vida",
+      label:
+        "Es la efectividad en la recuperación de los seguros de vida aplicando nuestro método de cinco pasos.",
     },
   ];
 
   const bottomStats = [
     {
-      value: "+2M Bs.",
+      value: "+31Millones Bs.",
       label:
-        "Más de 2 Millones de Bolivianos ahorrados en el pago de intereses de personas que han aprendido con cobanacademy y han tomado acción.",
+        "Es el ahorro que han logrado nuestros estudiantes en el pago de los intereses y seguros con nuestro método de amortización de tres pasos.",
     },
     {
       value: "+0 Bs.",

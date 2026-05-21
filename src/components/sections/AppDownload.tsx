@@ -1,11 +1,11 @@
 // landing-app/src/components/sections/AppDownload.tsx
-import React from 'react';
+import React from "react";
 
 const AppDownloadSection = () => {
   const stats = [
-    { icon: "/icons/download.svg", value: '59,865', label: 'Descargas' },
-    { icon: "/icons/like.svg", value: '29,852', label: 'Likes' },
-    { icon: "/icons/star.svg", value: '4.9/5', label: 'Rating' }
+    { icon: "/icons/download.svg", value: "59,865", label: "Descargas" },
+    { icon: "/icons/like.svg", value: "29,852", label: "Likes" },
+    { icon: "/icons/star.svg", value: "4.9/5", label: "Rating" },
   ];
 
   return (
@@ -19,15 +19,19 @@ const AppDownloadSection = () => {
             </h2>
 
             <p className="text-xl mb-8 font-regular text-white">
-              Aprende, consulta y sigue tu progreso en cualquier momento y lugar. La herramienta definitiva para tomar decisiones financieras inteligentes.
+              Para ganarle al banco con resultados garantizados.
             </p>
 
             {/* Stats */}
             <div className="flex flex-wrap gap-8 mb-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-3xl font-archivo-black text-white">{stat.value}</div>
-                  <div className="text-sm text-white font-medium">{stat.label}</div>
+                  <div className="text-3xl font-archivo-black text-white">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-white font-medium">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -38,8 +42,7 @@ const AppDownloadSection = () => {
                 href="https://apps.apple.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block transition-all duration-300 hover:opacity-80 cursor-pointer"
-              >
+                className="block transition-all duration-300 hover:opacity-80 cursor-pointer">
                 <img src="/icons/ios.svg" alt="Descargar en el App Store" />
               </a>
 
@@ -47,8 +50,7 @@ const AppDownloadSection = () => {
                 href="https://play.google.com/store/apps/details?id=com.cobanacademy.cobanacademy&hl=es_BO"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block transition-all duration-300 hover:opacity-80 cursor-pointer"
-              >
+                className="block transition-all duration-300 hover:opacity-80 cursor-pointer">
                 <img src="/icons/android.svg" alt="Disponible en Google Play" />
               </a>
             </div>

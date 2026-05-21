@@ -1,9 +1,9 @@
 // landing-app/src/components/sections/Pricing.tsx
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
-type PlanColor = 'basic' | 'premium' | 'gold';
+type PlanColor = "basic" | "premium" | "gold";
 
 interface Plan {
   name: string;
@@ -16,45 +16,49 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    name: 'Básico',
-    subtitle: 'Acceso por 90 días',
-    price: '100',
-    color: 'basic',
-    features: ['Cursos en video', 'Consultas ilimitadas', 'Eventos en vivo'],
+    name: "Básico",
+    subtitle: "Acceso por 30 días",
+    price: "100",
+    color: "basic",
+    features: ["Cursos en video", "Acceso a 12 preguntas por suscripción"],
   },
   {
-    name: 'Premium',
-    subtitle: 'Acceso por 180 días + ¡Mejor Valor!',
-    price: '120',
+    name: "Premium",
+    subtitle: "Acceso por 90 días",
+    price: "120",
     popular: true,
-    color: 'premium',
-    features: ['Cursos en video', 'Consultas ilimitadas', 'Eventos en vivo'],
+    color: "premium",
+    features: ["Cursos en video", "Acceso a 32 preguntas por suscripción"],
   },
   {
-    name: 'Gold / Anual',
-    subtitle: 'Acceso por 1 año (365 días)',
-    price: '150',
-    color: 'gold',
-    features: ['Cursos en video', 'Consultas ilimitadas', 'Eventos en vivo'],
+    name: "Gold / Anual",
+    subtitle: "Acceso por 180 días",
+    price: "150",
+    color: "gold",
+    features: [
+      "Cursos en video",
+      "Acceso a ilimitado a preguntas",
+      "Casos de uso",
+    ],
   },
 ];
 
 const priceColor = (color: PlanColor) => {
-  if (color === 'premium') return 'text-white';
-  if (color === 'gold') return 'text-[#7A52C4]';
-  return 'text-[#7A52C4]';
+  if (color === "premium") return "text-white";
+  if (color === "gold") return "text-[#7A52C4]";
+  return "text-[#7A52C4]";
 };
 
 const cardBg = (color: PlanColor) => {
-  if (color === 'premium') return 'bg-[#2E2257] text-white';
-  return 'bg-[#F4F1FF] text-[#2E2257]';
+  if (color === "premium") return "bg-[#2E2257] text-white";
+  return "bg-[#F4F1FF] text-[#2E2257]";
 };
 
 const buttonStyle = (color: PlanColor) => {
-  if (color === 'premium') {
-    return 'bg-[#EB5523] hover:bg-[#d94c1f] text-white';
+  if (color === "premium") {
+    return "bg-[#EB5523] hover:bg-[#d94c1f] text-white";
   }
-  return 'bg-[#6B54D6] hover:bg-[#5b48b7] text-white';
+  return "bg-[#6B54D6] hover:bg-[#5b48b7] text-white";
 };
 
 const PricingSection = () => {
@@ -66,7 +70,8 @@ const PricingSection = () => {
             ¡Suscríbete!
           </h2>
           <p className="text-lg md:text-xl text-white/80 font-regular">
-            Elige el plan que más te conviene y accede a todos nuestros beneficios.
+            Elige el plan que más te conviene y accede a todos nuestros
+            beneficios.
           </p>
         </div>
 
@@ -79,10 +84,13 @@ const PricingSection = () => {
                 relative rounded-3xl shadow-xl p-8 md:p-9
                 border border-white/20
                 ${cardBg(plan.color)}
-                ${plan.popular ? 'scale-[1.02]' : ''}
+                ${plan.popular ? "scale-[1.02]" : ""}
               `}
-              style={{ boxShadow: plan.popular ? '0 20px 50px rgba(0,0,0,0.25)' : '0 10px 30px rgba(0,0,0,0.12)' }}
-            >
+              style={{
+                boxShadow: plan.popular
+                  ? "0 20px 50px rgba(0,0,0,0.25)"
+                  : "0 10px 30px rgba(0,0,0,0.12)",
+              }}>
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#4F7BFF] text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
                   MÁS POPULAR
@@ -90,26 +98,38 @@ const PricingSection = () => {
               )}
 
               <div className="mb-6 text-center">
-                <h3 className="text-2xl md:text-3xl font-archivo-black mb-1">{plan.name}</h3>
-                <p className={`${plan.color === 'premium' ? 'text-white/80' : 'text-[#6B54D6]'} text-sm md:text-base font-semibold`}>
+                <h3 className="text-2xl md:text-3xl font-archivo-black mb-1">
+                  {plan.name}
+                </h3>
+                <p
+                  className={`${plan.color === "premium" ? "text-white/80" : "text-[#6B54D6]"} text-sm md:text-base font-semibold`}>
                   {plan.subtitle}
                 </p>
               </div>
 
               <div className="mb-6 text-center">
                 <div className="flex items-center justify-center">
-                  <span className={`text-5xl md:text-6xl font-archivo-black ${priceColor(plan.color)}`}>
+                  <span
+                    className={`text-5xl md:text-6xl font-archivo-black ${priceColor(plan.color)}`}>
                     {plan.price}
                   </span>
-                  <span className={`${plan.color === 'premium' ? 'text-white' : 'text-[#6B54D6]'} ml-2 text-2xl font-archivo-black`}>Bs.</span>
+                  <span
+                    className={`${plan.color === "premium" ? "text-white" : "text-[#6B54D6]"} ml-2 text-2xl font-archivo-black`}>
+                    Bs.
+                  </span>
                 </div>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center text-base md:text-lg">
-                    <span className="w-6 h-6 mr-3 flex items-center justify-center rounded-full bg-white/15 text-[#32C770]">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <li
+                    key={feature}
+                    className="flex items-center text-base md:text-lg">
+                    <span className="w-6 h-6 mr-3 flex items-center justify-center rounded-full  text-[#32C770]">
+                      <svg
+                        className="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 20 20">
                         <path
                           fillRule="evenodd"
                           d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -117,7 +137,14 @@ const PricingSection = () => {
                         />
                       </svg>
                     </span>
-                    <span className={plan.color === 'premium' ? 'text-white' : 'text-[#2E2257]'}>{feature}</span>
+                    <span
+                      className={
+                        plan.color === "premium"
+                          ? "text-white"
+                          : "text-[#2E2257]"
+                      }>
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -127,8 +154,7 @@ const PricingSection = () => {
                   w-full py-3 md:py-3.5 rounded-lg font-bold
                   transition-transform duration-200 hover:scale-[1.01]
                   ${buttonStyle(plan.color)}
-                `}
-              >
+                `}>
                 Suscríbete
               </button>
             </div>
@@ -139,10 +165,9 @@ const PricingSection = () => {
         <div className="md:hidden -mx-4">
           <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-4">
             {plans.map((plan, idx) => (
-              <div 
-                key={plan.name} 
-                className="w-[calc(100%-2rem)] shrink-0 snap-center first:ml-0"
-              >
+              <div
+                key={plan.name}
+                className="w-[calc(100%-2rem)] shrink-0 snap-center first:ml-0">
                 <div
                   className={`
                     relative rounded-3xl shadow-xl p-8
@@ -150,8 +175,11 @@ const PricingSection = () => {
                     ${cardBg(plan.color)}
                     h-full
                   `}
-                  style={{ boxShadow: plan.popular ? '0 20px 50px rgba(0,0,0,0.25)' : '0 10px 30px rgba(0,0,0,0.12)' }}
-                >
+                  style={{
+                    boxShadow: plan.popular
+                      ? "0 20px 50px rgba(0,0,0,0.25)"
+                      : "0 10px 30px rgba(0,0,0,0.12)",
+                  }}>
                   {plan.popular && (
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#4F7BFF] text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
                       MÁS POPULAR
@@ -159,18 +187,25 @@ const PricingSection = () => {
                   )}
 
                   <div className="mb-6 text-center">
-                    <h3 className="text-2xl font-archivo-black mb-1">{plan.name}</h3>
-                    <p className={`${plan.color === 'premium' ? 'text-white/80' : 'text-[#6B54D6]'} text-sm font-semibold`}>
+                    <h3 className="text-2xl font-archivo-black mb-1">
+                      {plan.name}
+                    </h3>
+                    <p
+                      className={`${plan.color === "premium" ? "text-white/80" : "text-[#6B54D6]"} text-sm font-semibold`}>
                       {plan.subtitle}
                     </p>
                   </div>
 
                   <div className="mb-6 text-center">
                     <div className="flex items-center justify-center">
-                      <span className={`text-5xl font-archivo-black ${priceColor(plan.color)}`}>
+                      <span
+                        className={`text-5xl font-archivo-black ${priceColor(plan.color)}`}>
                         {plan.price}
                       </span>
-                      <span className={`${plan.color === 'premium' ? 'text-white' : 'text-[#6B54D6]'} ml-2 text-2xl font-archivo-black`}>Bs.</span>
+                      <span
+                        className={`${plan.color === "premium" ? "text-white" : "text-[#6B54D6]"} ml-2 text-2xl font-archivo-black`}>
+                        Bs.
+                      </span>
                     </div>
                   </div>
 
@@ -178,7 +213,10 @@ const PricingSection = () => {
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-center text-base">
                         <span className="w-6 h-6 mr-3 flex items-center justify-center rounded-full bg-white/15 text-[#32C770]">
-                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <svg
+                            className="w-4 h-4"
+                            fill="currentColor"
+                            viewBox="0 0 20 20">
                             <path
                               fillRule="evenodd"
                               d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -186,7 +224,14 @@ const PricingSection = () => {
                             />
                           </svg>
                         </span>
-                        <span className={plan.color === 'premium' ? 'text-white' : 'text-[#2E2257]'}>{feature}</span>
+                        <span
+                          className={
+                            plan.color === "premium"
+                              ? "text-white"
+                              : "text-[#2E2257]"
+                          }>
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -196,8 +241,7 @@ const PricingSection = () => {
                       w-full py-3 rounded-lg font-bold
                       transition-transform duration-200 hover:scale-[1.01]
                       ${buttonStyle(plan.color)}
-                    `}
-                  >
+                    `}>
                     Suscríbete
                   </button>
                 </div>
