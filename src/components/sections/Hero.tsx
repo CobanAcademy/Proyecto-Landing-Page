@@ -133,7 +133,7 @@ const HeroSection = () => {
               <img
                 src={randomImageDesktop}
                 alt="Persona con dinero"
-                className="w-[120%] h-full object-cover object-center scale-110"
+                className="w-[120%] h-full object-contain object-center scale-110"
               />
             </div>
           </div>

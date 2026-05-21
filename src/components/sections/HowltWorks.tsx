@@ -4,6 +4,12 @@ const HowItWorksSection = () => {
   const steps = [
     {
       icon: "/icons/search.svg",
+      title: "IDENTIFICA",
+      description:
+        "A través de nuestra tecnología identificamos tu perfil crediticio.",
+    },
+    {
+      icon: "/icons/search.svg",
       title: "RETROALIMENTACIÓN Y CERTIFICACIÓN",
       description:
         "De acuerdo a tu aprovechamiento, en base a una prueba voluntaria para medir tu aprendizaje, podrás acceder a tu certificado digital.",
@@ -35,7 +41,7 @@ const HowItWorksSection = () => {
         </div>
 
         {/* Cards PRINCIPALES - Altura fija en desktop, flexible en móvil */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 [&>*:last-child:nth-child(3n+1)]:md:col-start-2">
           {steps.map((step, index) => (
             <div
               key={index}
