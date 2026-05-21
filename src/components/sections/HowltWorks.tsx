@@ -9,7 +9,7 @@ const HowItWorksSection = () => {
         "A través de nuestra tecnología identificamos tu perfil crediticio.",
     },
     {
-      icon: "/icons/search.svg",
+      icon: "/icons/Brain.svg",
       title: "RETROALIMENTACIÓN Y CERTIFICACIÓN",
       description:
         "De acuerdo a tu aprovechamiento, en base a una prueba voluntaria para medir tu aprendizaje, podrás acceder a tu certificado digital.",
@@ -21,7 +21,7 @@ const HowItWorksSection = () => {
         "En base a tu perfil crediticio ponemos a tu disposición nuestros cursos en video pregrabados, podcast, short y nuestros casos de usos ajustados a tus necesidades y expectativas fundamentado en las leyes, normativas y procedimientos bolivianos.",
     },
     {
-      icon: "/icons/headset.svg",
+      icon: "/icons/Handshake.svg",
       title: "ACOMPAÑAMIENTO",
       description:
         "Ponemos a tu disposición nuestro soporte técnico 24/7, sección de comentarios y preguntas, acceso a proveedores de acuerdo a tu perfil crediticio y asesorías especializadas pagadas.",
