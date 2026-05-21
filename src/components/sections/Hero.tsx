@@ -52,10 +52,10 @@ const HeroSection = () => {
       label:
         "Es el ahorro que han logrado nuestros estudiantes en el pago de los intereses y seguros con nuestro método de amortización de tres pasos.",
     },
-    {
-      value: "+0 Bs.",
-      label: "Más de 0 Millones de Bolivianos en carteras desembolsadas.",
-    },
+    // {
+    //   value: "+0 Bs.",
+    //   label: "Más de 0 Millones de Bolivianos en carteras desembolsadas.",
+    // },
   ];
 
   return (
@@ -199,11 +199,11 @@ const HeroSection = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
+            <div className="flex justify-center pb-10">
               {bottomStats.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-[#6C55D7] hover:bg-[#5C45C7] rounded-2xl p-2 py-8 transition-colors">
+                  className="bg-[#6C55D7] hover:bg-[#5C45C7] rounded-2xl p-2 py-8 transition-colors w-full max-w-md">
                   <div className="text-6xl md:text-6xl font-archivo-black text-white mb-4 text-center">
                     {stat.value}
                   </div>
