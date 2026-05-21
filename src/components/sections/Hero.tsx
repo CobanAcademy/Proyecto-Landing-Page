@@ -35,7 +35,7 @@ const HeroSection = () => {
         "De incremento en las probabilidades de obtener un crédito de acuerdo a tu perfil crediticio aplicando nuestro método de bancarización.",
     },
     {
-      value: "+25Mil Bs.",
+      value: "+25 Mil Bs.",
       label:
         "Es el ahorro promedio que han logrado nuestros estudiantes en el pago de los intereses y seguros con nuestro método de amortización de tres pasos.",
     },
@@ -48,7 +48,7 @@ const HeroSection = () => {
 
   const bottomStats = [
     {
-      value: "+31Millones Bs.",
+      value: "+31 Millones Bs.",
       label:
         "Es el ahorro que han logrado nuestros estudiantes en el pago de los intereses y seguros con nuestro método de amortización de tres pasos.",
     },

@@ -91,7 +91,7 @@ const HowItWorksSection = () => {
                   /* En móvil: altura auto */
                   /* En desktop: máximo 4 líneas para uniformidad */
                   md:line-clamp-4
-                  md:max-h-[6em]
+                
                   md:overflow-hidden
                 ">
                   {step.description}

@@ -167,7 +167,7 @@ const PricingSection = () => {
             {plans.map((plan, idx) => (
               <div
                 key={plan.name}
-                className="w-[calc(100%-2rem)] shrink-0 snap-center first:ml-0">
+                className="w-[calc(100%-2rem)] shrink-0 snap-center first:ml-0 pt-6">
                 <div
                   className={`
                     relative rounded-3xl shadow-xl p-8

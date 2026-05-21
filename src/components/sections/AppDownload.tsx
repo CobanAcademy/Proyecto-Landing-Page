@@ -3,8 +3,8 @@ import React from "react";
 
 const AppDownloadSection = () => {
   const stats = [
-    { icon: "/icons/download.svg", value: "59,865", label: "Descargas" },
-    { icon: "/icons/like.svg", value: "29,852", label: "Likes" },
+    { icon: "/icons/download.svg", value: "+500", label: "Descargas" },
+    { icon: "/icons/like.svg", value: "2,5 Millones", label: "Likes" },
     { icon: "/icons/star.svg", value: "4.9/5", label: "Rating" },
   ];
 
