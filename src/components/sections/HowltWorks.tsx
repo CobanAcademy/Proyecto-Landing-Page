@@ -8,12 +8,7 @@ const HowItWorksSection = () => {
       description:
         "A través de nuestra tecnología identificamos tu perfil crediticio.",
     },
-    {
-      icon: "/icons/Brain.svg",
-      title: "RETROALIMENTACIÓN Y CERTIFICACIÓN",
-      description:
-        "De acuerdo a tu aprovechamiento, en base a una prueba voluntaria para medir tu aprendizaje, podrás acceder a tu certificado digital.",
-    },
+
     {
       icon: "/icons/screen.svg",
       title: "CONTENIDO",
@@ -26,6 +21,12 @@ const HowItWorksSection = () => {
       description:
         "Ponemos a tu disposición nuestro soporte técnico 24/7, sección de comentarios y preguntas, acceso a proveedores de acuerdo a tu perfil crediticio y asesorías especializadas pagadas.",
     },
+    {
+      icon: "/icons/Brain.svg",
+      title: "RETROALIMENTACIÓN Y CERTIFICACIÓN",
+      description:
+        "De acuerdo a tu aprovechamiento, en base a una prueba voluntaria para medir tu aprendizaje, podrás acceder a tu certificado digital.",
+    },
   ];
 
   return (
@@ -36,7 +37,7 @@ const HowItWorksSection = () => {
             ¿Cómo funciona cobanacademy?
           </h2>
           <p className="text-xl  max-w-3xl mx-auto text-[#6B54D6]">
-            Te explicamos en tres pasos:
+            Te explicamos en cuatro pasos:
           </p>
         </div>
 
@@ -151,21 +152,13 @@ const HowItWorksSection = () => {
                 text-white
                   
                 ">
-                  ¿No quedaste satisfecho?1 te reembolsamos tu suscripción. El
+                  ¿No quedaste satisfecho? te reembolsamos tu suscripción. El
                   único requisito es haber completado al menos un curso y
                   compartirnos el motivo para ayudarnos a mejorar.
                 </p>
               </div>
 
               {/* Lado derecho - CTA */}
-            </div>
-
-            {/* Nota final (solo móvil) */}
-            <div className="mt-8 pt-6 border-t border-primary/20 md:hidden">
-              <p className="text-center text-muted-foreground text-sm">
-                "La única academia con garantía de resultados en educación
-                financiera"
-              </p>
             </div>
           </div>
         </div>

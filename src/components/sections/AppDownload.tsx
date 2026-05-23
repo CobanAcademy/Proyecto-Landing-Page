@@ -38,13 +38,13 @@ const AppDownloadSection = () => {
 
             {/* App Store Badges */}
             <div className="flex gap-2">
-              <a
+              {/* <a
                 href="https://apps.apple.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block transition-all duration-300 hover:opacity-80 cursor-pointer">
                 <img src="/icons/ios.svg" alt="Descargar en el App Store" />
-              </a>
+              </a> */}
 
               <a
                 href="https://play.google.com/store/apps/details?id=com.cobanacademy.cobanacademy&hl=es_BO"
