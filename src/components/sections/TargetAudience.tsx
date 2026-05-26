@@ -1,13 +1,20 @@
 // landing-app/src/components/sections/TargetAudience.tsx
 "use client";
 
-import React from "react";
+import { useEffect, useRef } from "react";
 import { useAppDownload, useAppLogs } from "@/utils/deviceDetection";
 import { ActivityCodes } from "@/utils/activityLogger";
 
 const TargetAudienceSection = () => {
   const { handleDownload } = useAppDownload();
   const { handleLog } = useAppLogs();
+  const middleRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (middleRef.current) {
+      middleRef.current.scrollIntoView({ behavior: "instant", block: "nearest", inline: "center" });
+    }
+  }, []);
 
   const handleWebApp = () => {
     handleLog(ActivityCodes.WEB_APP);
@@ -87,6 +94,7 @@ const TargetAudienceSection = () => {
             {audienceTypes.map((audience, index) => (
               <div
                 key={index}
+                ref={index === 1 ? middleRef : undefined}
                 className="w-[calc(100%-2rem)] shrink-0 snap-center first:ml-0">
                 <div className="rounded-xl p-6 border-[#6B54D6] border-2 h-full">
                   <div className="flex flex-col items-start text-left mb-6">
