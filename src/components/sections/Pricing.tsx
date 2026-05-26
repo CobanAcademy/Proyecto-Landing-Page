@@ -1,7 +1,7 @@
 // landing-app/src/components/sections/Pricing.tsx
 "use client";
 
-import React from "react";
+import { useEffect, useRef } from "react";
 
 type PlanColor = "basic" | "premium" | "gold";
 
@@ -62,6 +62,14 @@ const buttonStyle = (color: PlanColor) => {
 };
 
 const PricingSection = () => {
+  const popularRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (popularRef.current) {
+      popularRef.current.scrollIntoView({ behavior: "instant", block: "nearest", inline: "center" });
+    }
+  }, []);
+
   return (
     <section id="suscripcion" className="py-16 md:py-24 bg-[#6C55D7]">
       <div className="container-custom">
@@ -77,7 +85,7 @@ const PricingSection = () => {
 
         {/* DESKTOP - Grid */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
-          {plans.map((plan, idx) => (
+          {plans.map((plan) => (
             <div
               key={plan.name}
               className={`
@@ -164,9 +172,10 @@ const PricingSection = () => {
         {/* MOBILE - Slider con swipe */}
         <div className="md:hidden -mx-4">
           <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-4">
-            {plans.map((plan, idx) => (
+            {plans.map((plan) => (
               <div
                 key={plan.name}
+                ref={plan.popular ? popularRef : undefined}
                 className="w-[calc(100%-2rem)] shrink-0 snap-center first:ml-0 pt-6">
                 <div
                   className={`
