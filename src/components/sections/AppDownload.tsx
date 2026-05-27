@@ -1,7 +1,12 @@
+"use client";
 // landing-app/src/components/sections/AppDownload.tsx
+import { useActivityLogger } from "@/utils/activityLogger";
 import React from "react";
 
 const AppDownloadSection = () => {
+  const { logSocialClick, logSectionNavigation, logAppStoreClick } =
+    useActivityLogger();
+
   const stats = [
     { icon: "/icons/download.svg", value: "+500", label: "Descargas" },
 
@@ -19,7 +24,9 @@ const AppDownloadSection = () => {
             </h2>
 
             <p className="text-xl mb-8 font-regular text-white">
-              Para ganarle al banco con resultados garantizados.
+              Aprende, consulta y sigue tu progreso en cualquier momento y
+              lugar. La herramienta definitiva para tomar decisiones financieras
+              inteligentes.
             </p>
 
             {/* Stats */}
@@ -49,9 +56,18 @@ const AppDownloadSection = () => {
               <a
                 href="https://play.google.com/store/apps/details?id=com.cobanacademy.cobanacademy&hl=es_BO"
                 target="_blank"
+                onClick={() => logAppStoreClick("android", "dowloadApp")}
                 rel="noopener noreferrer"
                 className="block transition-all duration-300 hover:opacity-80 cursor-pointer">
                 <img src="/icons/android.svg" alt="Disponible en Google Play" />
+              </a>
+              <a
+                href="https://app.cobanacademy.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => logAppStoreClick("web", "dowloadApp")}
+                className="block transition-all duration-300  hover:opacity-80 cursor-pointer">
+                <img src="/icons/web.svg" alt="Utilizalo en la web" />
               </a>
             </div>
           </div>

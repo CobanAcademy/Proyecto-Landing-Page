@@ -109,15 +109,15 @@ const Footer = () => {
                 className="block transition-all duration-300  hover:opacity-80 cursor-pointer">
                 <img src="/icons/android.svg" alt="Disponible en Google Play" />
               </a>
-              {/* App Store
+
               <a
-                href="https://apps.apple.com"
+                href="https://app.cobanacademy.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => logAppStoreClick("ios", "footer")}
+                onClick={() => logAppStoreClick("web", "footer")}
                 className="block transition-all duration-300  hover:opacity-80 cursor-pointer">
-                <img src="/icons/ios.svg" alt="Descargar en el App Store" />
-              </a> */}
+                <img src="/icons/web.svg" alt="Utilizalo en la web" />
+              </a>
             </div>
           </div>
         </div>
@@ -131,31 +131,13 @@ const Footer = () => {
             onClick={() => logSocialClick("facebook", "footer")}>
             <img src="/socials/facebook.svg" alt="Facebook" className="" />
           </a>
-
           <a
-            href="https://x.com/CobanAcademy"
+            href="https://www.tiktok.com/@cobanexpertoencreditos"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => logSocialClick("twitter", "footer")}>
-            <img src="/socials/Subtract.svg" alt="Twitter" className="" />
+            onClick={() => logSocialClick("tiktok", "footer")}>
+            <img src="/socials/tiktok.svg" alt="TikTok" className="" />
           </a>
-
-          <a
-            href="https://www.linkedin.com/company/cobanacademy"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => logSocialClick("linkedin", "footer")}>
-            <img src="/socials/linkedin.svg" alt="LinkedIn" className="" />
-          </a>
-
-          <a
-            href="https://www.youtube.com/@CobanAcademy"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => logSocialClick("youtube", "footer")}>
-            <img src="/socials/youtube.svg" alt="YouTube" className="" />
-          </a>
-
           <a
             href="https://www.instagram.com/cobanacademy"
             target="_blank"
