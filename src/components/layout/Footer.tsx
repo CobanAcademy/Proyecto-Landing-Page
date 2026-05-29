@@ -116,7 +116,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 onClick={() => logAppStoreClick("web", "footer")}
                 className="block transition-all duration-300  hover:opacity-80 cursor-pointer">
-                <img src="/icons/web.svg" alt="Utilizalo en la web" />
+                <img src="/icons/web.svg" alt="Utilízalo en la web" />
               </a>
             </div>
           </div>

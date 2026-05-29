@@ -152,7 +152,7 @@ const HowItWorksSection = () => {
                 text-white
                   
                 ">
-                  ¿No quedaste satisfecho? te reembolsamos tu suscripción. El
+                  ¿No quedaste satisfecho? ¡Te reembolsamos tu suscripción! El
                   único requisito es haber completado al menos un curso y
                   compartirnos el motivo para ayudarnos a mejorar.
                 </p>

@@ -19,7 +19,7 @@ const Header = () => {
     handleLog(ActivityCodes.CONTACT_WHATSAPP);
     
     // 2. Abrir WhatsApp
-    const whatsappUrl = 'https://wa.me/59177889320?text=Hola%20Quiero%20mas%20informacion%20acerca%20de%20la%20App';
+    const whatsappUrl = 'https://wa.me/59177889320?text=Hola%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20acerca%20de%20la%20App';
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
     const handleWebApp= () => {

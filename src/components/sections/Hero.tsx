@@ -110,8 +110,8 @@ const HeroSection = () => {
               </h1>
 
               <p className="text-xl text-[#C5BFEB] mb-8 font-regular">
-                Si necesitas aprender como solicitar un crédito o como
-                solucionar un problema con tus créditos o como ganarle al banco,
+                Si necesitas aprender cómo solicitar un crédito o cómo
+                solucionar un problema con tus créditos o cómo ganarle al banco,
                 llegaste al lugar correcto
               </p>
 
