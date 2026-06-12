@@ -8,11 +8,14 @@ import { ActivityCodes } from "@/utils/activityLogger";
 const TargetAudienceSection = () => {
   const { handleDownload } = useAppDownload();
   const { handleLog } = useAppLogs();
+  const scrollRef = useRef<HTMLDivElement>(null);
   const middleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (middleRef.current) {
-      middleRef.current.scrollIntoView({ behavior: "instant", block: "nearest", inline: "center" });
+    const container = scrollRef.current;
+    const card = middleRef.current;
+    if (container && card) {
+      container.scrollLeft = card.offsetLeft - (container.offsetWidth - card.offsetWidth) / 2;
     }
   }, []);
 
@@ -90,7 +93,7 @@ const TargetAudienceSection = () => {
 
         {/* MOBILE - Slider con swipe */}
         <div className="md:hidden -mx-4">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-4">
+          <div ref={scrollRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-4">
             {audienceTypes.map((audience, index) => (
               <div
                 key={index}

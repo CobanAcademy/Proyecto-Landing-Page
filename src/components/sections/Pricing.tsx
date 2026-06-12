@@ -62,11 +62,14 @@ const buttonStyle = (color: PlanColor) => {
 };
 
 const PricingSection = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
   const popularRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (popularRef.current) {
-      popularRef.current.scrollIntoView({ behavior: "instant", block: "nearest", inline: "center" });
+    const container = scrollRef.current;
+    const card = popularRef.current;
+    if (container && card) {
+      container.scrollLeft = card.offsetLeft - (container.offsetWidth - card.offsetWidth) / 2;
     }
   }, []);
 
@@ -171,7 +174,7 @@ const PricingSection = () => {
 
         {/* MOBILE - Slider con swipe */}
         <div className="md:hidden -mx-4">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-4">
+          <div ref={scrollRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-4">
             {plans.map((plan) => (
               <div
                 key={plan.name}

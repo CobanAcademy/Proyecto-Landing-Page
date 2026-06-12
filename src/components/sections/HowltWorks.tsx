@@ -157,8 +157,6 @@ const HowItWorksSection = () => {
                   compartirnos el motivo para ayudarnos a mejorar.
                 </p>
               </div>
-
-              {/* Lado derecho - CTA */}
             </div>
           </div>
         </div>
